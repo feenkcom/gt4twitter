@@ -28,14 +28,24 @@ GtAcZincRequestResponse >> contents: anObject [
 
 { #category : #'gt extensions' }
 GtAcZincRequestResponse >> gtContentsFor: aView [
-
 	<gtView>
+	
 	self contents ifNil: [ ^ aView empty ].
+	
 	^ aView forward
 		  title: 'Contents';
 		  priority: 1;
 		  object: [ self contents ];
-		  view: #gtTreeFor:
+		  view: #gtLiveFor:
+]
+
+{ #category : #'gt extensions' }
+GtAcZincRequestResponse >> gtViewJsonResponseFor: aView [ 
+	<gtView>
+	
+	zincResponse ifNil: [ ^ aView empty ].
+	
+	^ zincResponse gtJsonFor: aView
 ]
 
 { #category : #testing }

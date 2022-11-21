@@ -68,6 +68,16 @@ GtTwTwitterAPIRequest >> pathSegments [
 	^ {}
 ]
 
+{ #category : #printing }
+GtTwTwitterAPIRequest >> printOn: aStream [
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		self pathSegments 
+			asStringOn: aStream
+			delimiter: '/' ]
+]
+
 { #category : #accessing }
 GtTwTwitterAPIRequest >> responseType [
 	self subclassResponsibility 

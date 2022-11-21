@@ -7,7 +7,8 @@ Class {
 		'zincResponse',
 		'requestResponse',
 		'requestResult',
-		'queryFields'
+		'queryFields',
+		'timestamp'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-Requests'
 }
@@ -47,6 +48,8 @@ GtAcBasicAPIRequest >> authorizedZnClient [
 { #category : #execution }
 GtAcBasicAPIRequest >> basicExecute [ 
 	| zincClient |
+	
+	timestamp := DateAndTime now.
 	
 	zincClient := self performZincCall.
 	zincResponse := zincClient  response.
@@ -135,6 +138,18 @@ GtAcBasicAPIRequest >> formattedQueryValueFor: aValue [
 ]
 
 { #category : #'gt - extensions' }
+GtAcBasicAPIRequest >> gtViewJsonResponseFor: aView [ 
+	<gtView>
+	
+	zincResponse ifNil: [ ^ aView empty ].
+	
+	^ aView forward 
+		title: 'JSON Response';
+		object: [ zincResponse ];
+		view: #gtJsonFor:
+]
+
+{ #category : #'gt - extensions' }
 GtAcBasicAPIRequest >> gtViewQueryParametersFor: aView [ 
 	<gtView>
 	
@@ -142,6 +157,18 @@ GtAcBasicAPIRequest >> gtViewQueryParametersFor: aView [
 		title: 'Query Parameters';
 		object: [ queryFields ];
 		view: #gtItemsFor:
+]
+
+{ #category : #'gt - extensions' }
+GtAcBasicAPIRequest >> gtViewRequestUrlFor: aView [
+	<gtView>
+	
+	zincRequest ifNil: [ ^ aView  empty ].
+	
+	^ aView forward 
+		title: 'URL';
+		object: [ zincRequest url ];
+		view: #gtUrlFor:
 ]
 
 { #category : #accessing }
@@ -194,8 +221,18 @@ GtAcBasicAPIRequest >> queryParameterAt: aKey put: aValue [
 ]
 
 { #category : #accessing }
+GtAcBasicAPIRequest >> requestResult [
+	^ requestResult
+]
+
+{ #category : #accessing }
 GtAcBasicAPIRequest >> serverUrl [
 	^ self apiClient serverUrl
+]
+
+{ #category : #accessing }
+GtAcBasicAPIRequest >> timestamp [
+	^ timestamp
 ]
 
 { #category : #accessing }

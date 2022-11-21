@@ -5,14 +5,13 @@ Class {
 		'stream',
 		'done',
 		'lastResult',
-		'initialResult',
 		'requestBuilder'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-Model'
 }
 
 { #category : #accessing }
-GtTwTweetsPaginatedLoaderStream >> executeNewRequest [
+GtTwTweetsPaginatedLoaderStream >> createNewRequest [
 	| newRequest| 
 	newRequest := requestBuilder value.
 	
@@ -21,7 +20,49 @@ GtTwTweetsPaginatedLoaderStream >> executeNewRequest [
 			newRequest 
 				paginationToken: lastResult returnedValue nextPaginationToken ] ].
 	
+	^ newRequest
+]
+
+{ #category : #accessing }
+GtTwTweetsPaginatedLoaderStream >> executeNewRequest [
+	| newRequest | 
+	newRequest := self createNewRequest.	
+	self logRequest: newRequest.
+	
 	^ newRequest execute
+]
+
+{ #category : #accessing }
+GtTwTweetsPaginatedLoaderStream >> extractValuesFromResult: aRequestResult [ 
+	^ GtTwTweetsGroup withAll: (aRequestResult returnedValue data 
+		collect: [ :aRawTweet |
+			GtTwTweet  fromRawTweet:  aRawTweet ])
+]
+
+{ #category : #'gt - extensions' }
+GtTwTweetsPaginatedLoaderStream >> gtViewTweetGroupsFor: aView [
+	<gtView>
+	
+	^ aView list 
+		title: 'Tweet Groups';
+		priority: 15;
+		items: [ requests collect: [ :aRequest |
+			aRequest requestResult returnedValue ] ];
+		actionUpdateButton
+]
+
+{ #category : #accessing }
+GtTwTweetsPaginatedLoaderStream >> gtViewTweetsFor: aView [
+	<gtView>
+
+	^ aView columnedList
+		title: 'Tweets';
+		priority: 1;
+		items: [ self asyncSimilarCopy ];
+		column: 'Created At' text: [ :aTweet | 
+			aTweet createdAt printToSeconds ] width: 180;
+		column: 'Text' text: [ :aTweet | aTweet text ];
+		actionUpdateButton
 ]
 
 { #category : #accessing }
@@ -31,7 +72,7 @@ GtTwTweetsPaginatedLoaderStream >> hasNextPage [
 	^ lastResult returnedValue hasNextPaginationToken
 ]
 
-{ #category : #accessing }
+{ #category : #testing }
 GtTwTweetsPaginatedLoaderStream >> hasSuccessfulResult [
 	^ lastResult notNil
 ]
@@ -39,22 +80,18 @@ GtTwTweetsPaginatedLoaderStream >> hasSuccessfulResult [
 { #category : #initialization }
 GtTwTweetsPaginatedLoaderStream >> initializeForRequestBuilder: aRequestBuilder [
 	requestBuilder := aRequestBuilder.
-	initialResult := nil.
+	
 	lastResult := nil.
 	done := false.
 	stream := nil.
+	
+	requests := OrderedCollection new.
 ]
 
 { #category : #accessing }
 GtTwTweetsPaginatedLoaderStream >> loadInitialValues [
 
-	lastResult := self executeNewRequest.
-
-	self hasSuccessfulResult ifFalse: [ 
-		done := true.
-		^ #() ].
-
-	^ lastResult returnedValue data
+	^ self retrieveValues
 ]
 
 { #category : #accessing }
@@ -67,13 +104,7 @@ GtTwTweetsPaginatedLoaderStream >> loadNextValues [
 		done := true.
 		^ #() ].
 
-	lastResult := self executeNewRequest.
-
-	self hasSuccessfulResult ifFalse: [ 
-		done := true.
-		^ #() ].
-
-	^ lastResult returnedValue data
+	^ self retrieveValues
 ]
 
 { #category : #accessing }
@@ -109,6 +140,18 @@ GtTwTweetsPaginatedLoaderStream >> pollNext: anAsynchronousContext [
 GtTwTweetsPaginatedLoaderStream >> postSimilarCopy [
 	"Is called by similarCopy. self is a shallow copy, implementors should set the fields as necessary to complete the similar copy"
 
-	requestBuilder ifNil: [
+	requestBuilder ifNotNil: [
 		self initializeForRequestBuilder: requestBuilder ]
+]
+
+{ #category : #accessing }
+GtTwTweetsPaginatedLoaderStream >> retrieveValues [
+	
+	lastResult := self executeNewRequest.
+
+	self hasSuccessfulResult ifFalse: [ 
+		done := true.
+		^ #() ].
+
+	^ self extractValuesFromResult: lastResult
 ]

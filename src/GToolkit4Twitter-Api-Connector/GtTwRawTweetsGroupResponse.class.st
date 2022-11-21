@@ -18,7 +18,7 @@ GtTwRawTweetsGroupResponse >> gtViewMetadataFor: aView [
 		title: 'Metadata';
 		priority: 55;
 		object: [ self metadata ];
-		view: #gtItemsFor:
+		view: #gtRawDataFor:
 ]
 
 { #category : #'gt - extensions' }

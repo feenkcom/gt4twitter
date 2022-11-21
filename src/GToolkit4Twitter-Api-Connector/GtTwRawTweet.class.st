@@ -4,6 +4,11 @@ Class {
 	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
 }
 
+{ #category : #accessing }
+GtTwRawTweet >> createdAt [
+	^ DateAndTime fromString:  (self rawDataAt: 'created_at') 
+]
+
 { #category : #'gt - extensions' }
 GtTwRawTweet >> gtViewTextFor: aView [
 	<gtView>
