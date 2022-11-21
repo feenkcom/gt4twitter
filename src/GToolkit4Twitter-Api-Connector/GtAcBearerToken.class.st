@@ -40,7 +40,11 @@ GtAcBearerToken >> value [
 ]
 
 { #category : #accessing }
-GtAcBearerToken >> value: anObject [
-
-	value := anObject
+GtAcBearerToken >> value: aString [
+	self 
+		assert: [ aString notNil and: [ value isNil ] ]
+		description: 'Token value is immutable'.
+	self assert: [ aString isNotEmpty ].
+	
+	value := aString
 ]

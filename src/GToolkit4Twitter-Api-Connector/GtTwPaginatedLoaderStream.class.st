@@ -4,10 +4,29 @@ Class {
 	#traits : 'TAsyncStream',
 	#classTraits : 'TAsyncStream classTrait',
 	#instVars : [
-		'requests'
+		'requests',
+		'apiContext'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-Model'
 }
+
+{ #category : #accessing }
+GtTwPaginatedLoaderStream class >> forApiContext: anApiContext [
+	^ self new 
+		apiContext: anApiContext
+]
+
+{ #category : #accessing }
+GtTwPaginatedLoaderStream >> apiContext [
+
+	^ apiContext
+]
+
+{ #category : #accessing }
+GtTwPaginatedLoaderStream >> apiContext: anObject [
+
+	apiContext := anObject
+]
 
 { #category : #'gt - extensions' }
 GtTwPaginatedLoaderStream >> gtViewRequestsHistoryFor: aView [

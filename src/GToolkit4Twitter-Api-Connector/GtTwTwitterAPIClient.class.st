@@ -7,10 +7,11 @@ Class {
 { #category : #accessing }
 GtTwTwitterAPIClient >> authorizedZnClient [
 	| znClient |
-	self assert: [ self bearerToken notNil ].
+	self assert: [ self authentication notNil ].
 	
 	znClient := self znClient.
-	znClient setBearerAuthentication: self bearerToken value.
+	self authentication 
+		applyAuthenticationOn: znClient .
 	
 	^ znClient
 ]

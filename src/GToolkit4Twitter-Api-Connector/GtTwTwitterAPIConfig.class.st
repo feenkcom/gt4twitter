@@ -2,7 +2,7 @@ Class {
 	#name : #GtTwTwitterAPIConfig,
 	#superclass : #GtAcBasicAPIConfig,
 	#instVars : [
-		'bearerToken'
+		'authentication'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-Client'
 }
@@ -14,11 +14,13 @@ GtTwTwitterAPIConfig class >> forDefaultServer [
 ]
 
 { #category : #accessing }
-GtTwTwitterAPIConfig >> bearerToken [
-	^ bearerToken
+GtTwTwitterAPIConfig >> authentication [
+
+	^ authentication
 ]
 
 { #category : #accessing }
-GtTwTwitterAPIConfig >> bearerToken: aBearerToken [
-	bearerToken := aBearerToken
+GtTwTwitterAPIConfig >> authentication: anApiAuthentication [
+
+	authentication := anApiAuthentication
 ]

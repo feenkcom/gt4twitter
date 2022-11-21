@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #accessing }
+GtTwRawUser >> id [ 
+	^ self rawDataWithDefaultAt:'id'
+]
+
+{ #category : #accessing }
 GtTwRawUser >> name [ 
 	^ self rawDataWithDefaultAt:'name'
 ]
@@ -15,4 +20,9 @@ GtTwRawUser >> printOn: aStream [
 	
 	aStream parenthesize: [
 		aStream << (self name ifNil: ['-']) ]
+]
+
+{ #category : #accessing }
+GtTwRawUser >> username [ 
+	^ self rawDataWithDefaultAt:'username'
 ]

@@ -8,7 +8,7 @@ Class {
 	#category : #'GToolkit4Twitter-Api-Connector-Logging'
 }
 
-{ #category : #accessing }
+{ #category : #printing }
 GtAcZincErrorSignal >> printOneLineContentsOn: stream [
 	error printOn: stream.
 ]

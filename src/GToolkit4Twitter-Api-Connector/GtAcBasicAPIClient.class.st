@@ -8,13 +8,13 @@ Class {
 }
 
 { #category : #accessing }
-GtAcBasicAPIClient >> authorizedZnClient [
-	self subclassResponsibility
+GtAcBasicAPIClient >> authentication [
+	^ configuration authentication
 ]
 
 { #category : #accessing }
-GtAcBasicAPIClient >> bearerToken [
-	^ configuration bearerToken
+GtAcBasicAPIClient >> authorizedZnClient [
+	self subclassResponsibility
 ]
 
 { #category : #accessing }

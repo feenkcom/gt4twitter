@@ -13,7 +13,7 @@ Class {
 { #category : #accessing }
 GtTwTweetsPaginatedLoaderStream >> createNewRequest [
 	| newRequest| 
-	newRequest := requestBuilder value.
+	newRequest := requestBuilder cull: self apiContext.
 	
 	lastResult ifNotNil: [
 		lastResult returnedValue hasNextPaginationToken ifTrue: [
@@ -51,7 +51,7 @@ GtTwTweetsPaginatedLoaderStream >> gtViewTweetGroupsFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 GtTwTweetsPaginatedLoaderStream >> gtViewTweetsFor: aView [
 	<gtView>
 
@@ -78,7 +78,7 @@ GtTwTweetsPaginatedLoaderStream >> hasSuccessfulResult [
 ]
 
 { #category : #initialization }
-GtTwTweetsPaginatedLoaderStream >> initializeForRequestBuilder: aRequestBuilder [
+GtTwTweetsPaginatedLoaderStream >> initializeWithRequestBuilder: aRequestBuilder [
 	requestBuilder := aRequestBuilder.
 	
 	lastResult := nil.
@@ -141,7 +141,7 @@ GtTwTweetsPaginatedLoaderStream >> postSimilarCopy [
 	"Is called by similarCopy. self is a shallow copy, implementors should set the fields as necessary to complete the similar copy"
 
 	requestBuilder ifNotNil: [
-		self initializeForRequestBuilder: requestBuilder ]
+		self initializeWithRequestBuilder: requestBuilder ]
 ]
 
 { #category : #accessing }
