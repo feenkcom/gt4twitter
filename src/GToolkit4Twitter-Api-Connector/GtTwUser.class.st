@@ -149,7 +149,10 @@ GtTwUser >> name [
 { #category : #accessing }
 GtTwUser >> profileImage [ 
 	^ profileImage ifNil: [
-		profileImage := self downloadPofileImage.
+		[profileImage := self downloadPofileImage]
+			
+			on: Error 
+			do: [ profileImage := nil ].
 		profileImage ifNil: [
 			profileImage := Form extent: 48@48 depth: 32.
 			profileImage fillColor: (Color veryLightGray).
