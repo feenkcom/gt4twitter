@@ -113,11 +113,21 @@ GtTwTweetSummaryElement >> tweet: aTweet [
 ]
 
 { #category : #accessing }
+GtTwTweetSummaryElement >> updateAuthorDetails [
+	self tweet author ifNil: [
+		authorNameLabel text: '<missing>'.
+		authorHandleLabel text: ''.
+		^ self ].
+	
+	authorNameLabel text: self tweet author name.
+	authorHandleLabel text: '@', self tweet author  username.
+]
+
+{ #category : #accessing }
 GtTwTweetSummaryElement >> updateContent [
 	pictureElement user: self tweet author.
 		
-	authorNameLabel text: self tweet author name.
-	authorHandleLabel text: '@', self tweet author  username.
+	self updateAuthorDetails.
 	
 	tweetTextEditor text: self tweet text.
 	

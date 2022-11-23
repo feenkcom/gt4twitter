@@ -42,6 +42,14 @@ GtTwUserPictureElement >> buildProfilePictureElement [
 					theContainer addChild: theElement ] ]
 ]
 
+{ #category : #updating }
+GtTwUserPictureElement >> emptyDefaultForm [
+	| defaultForm |
+	defaultForm := Form extent: 48@48 depth: 32.
+	defaultForm fillColor: (Color veryLightGray).
+	^ defaultForm
+]
+
 { #category : #initialization }
 GtTwUserPictureElement >> initialize [
 	super initialize.
@@ -57,7 +65,9 @@ GtTwUserPictureElement >> initialize [
 { #category : #updating }
 GtTwUserPictureElement >> updateContentForUser: aUser [
 	pictureElement formBlock: [ 
-		aUser profilePictureForm  ].
+		aUser 
+			ifNil: [ self emptyDefaultForm ]
+			ifNotNil: [ aUser profilePictureForm ]  ].
 		
 	"pictureElement asyncFuture future: [ 
 		aUser profilePictureForm asElement
