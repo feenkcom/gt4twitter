@@ -1,5 +1,5 @@
 Class {
 	#name : #GtTwRawEntity,
-	#superclass : #GtTwRawData,
+	#superclass : #GtTwRawObject,
 	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
 }

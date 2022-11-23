@@ -1,5 +1,5 @@
 Class {
-	#name : #GtTwRawData,
+	#name : #GtTwRawObject,
 	#superclass : #Object,
 	#instVars : [
 		'rawData'
@@ -8,13 +8,13 @@ Class {
 }
 
 { #category : #'instance creation' }
-GtTwRawData class >> fromRawData: aRawData [
+GtTwRawObject class >> fromRawData: aRawData [
 	^ self new 
 		initializaFromRawData: aRawData
 ]
 
 { #category : #'gt - extensions' }
-GtTwRawData >> gtRawDataFor: aView [
+GtTwRawObject >> gtRawDataFor: aView [
 	<gtView>
 	
 	self rawData ifNil: [ ^ aView empty ].
@@ -27,7 +27,7 @@ GtTwRawData >> gtRawDataFor: aView [
 ]
 
 { #category : #testing }
-GtTwRawData >> hasNotNilKey: aKey [
+GtTwRawObject >> hasNotNilKey: aKey [
 	^ self rawData 
 		at: aKey
 		ifPresent: [ :aValue | aValue ~= nil ]
@@ -35,29 +35,29 @@ GtTwRawData >> hasNotNilKey: aKey [
 ]
 
 { #category : #initialization }
-GtTwRawData >> initializaFromRawData: aRawData [
+GtTwRawObject >> initializaFromRawData: aRawData [
 	self rawData: aRawData
 ]
 
 { #category : #accessing }
-GtTwRawData >> rawData [
+GtTwRawObject >> rawData [
 
 	^ rawData
 ]
 
 { #category : #accessing }
-GtTwRawData >> rawData: anObject [
+GtTwRawObject >> rawData: anObject [
 
 	rawData := anObject
 ]
 
 { #category : #accessing }
-GtTwRawData >> rawDataAt: aKey [ 
+GtTwRawObject >> rawDataAt: aKey [ 
 	^ self rawData at: aKey
 ]
 
 { #category : #accessing }
-GtTwRawData >> rawDataWithDefaultAt: aString [ 
+GtTwRawObject >> rawDataWithDefaultAt: aString [ 
 	^ self rawData 
 		at: aString ifAbsent: [ nil ]
 ]

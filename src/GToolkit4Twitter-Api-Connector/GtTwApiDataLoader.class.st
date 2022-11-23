@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'apiContext'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Client'
+	#category : #'GToolkit4Twitter-Api-Connector-Loader'
 }
 
 { #category : #'instance creation' }

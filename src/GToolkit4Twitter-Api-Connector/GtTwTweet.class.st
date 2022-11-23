@@ -2,7 +2,8 @@ Class {
 	#name : #GtTwTweet,
 	#superclass : #GtTwEntity,
 	#instVars : [
-		'rawTweet'
+		'rawTweet',
+		'author'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-Model'
 }
@@ -11,6 +12,22 @@ Class {
 GtTwTweet class >> fromRawTweet: aRawTweet [
 	^ self new 
 		rawTweet: aRawTweet
+]
+
+{ #category : #'instance creation' }
+GtTwTweet class >> fromRawTweet: aRawTweet inContext: anApiContext [
+	^ (self forApiContext: anApiContext)
+		rawTweet: aRawTweet
+]
+
+{ #category : #accessing }
+GtTwTweet >> author [
+	^ author
+]
+
+{ #category : #accessing }
+GtTwTweet >> author: aUser [
+	author := aUser
 ]
 
 { #category : #accessing }
@@ -23,7 +40,20 @@ GtTwTweet >> descriptionOn: aStream [
 	aStream << self text
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
+GtTwTweet >> gtRawDataFor: aView [
+	<gtView>
+	
+	self rawTweet ifNil: [ ^ aView empty ].
+	
+	^ aView forward 
+		title: 'Raw data';
+		priority: 75;
+		object: [ self rawTweet];
+		view: #gtRawDataFor:
+]
+
+{ #category : #'gt - extensions' }
 GtTwTweet >> gtViewTextFor: aView [
 	<gtView>
 	
@@ -36,6 +66,11 @@ GtTwTweet >> gtViewTextFor: aView [
 		view: #gtStringFor:
 ]
 
+{ #category : #'accessing - metrics' }
+GtTwTweet >> likesCount [
+	^ self rawTweet likesCount
+]
+
 { #category : #accessing }
 GtTwTweet >> rawTweet [
 
@@ -46,6 +81,11 @@ GtTwTweet >> rawTweet [
 GtTwTweet >> rawTweet: aRawTweet [
 
 	rawTweet := aRawTweet
+]
+
+{ #category : #'accessing - metrics' }
+GtTwTweet >> retweetsCount [
+	^ self rawTweet retweetsCount
 ]
 
 { #category : #accessing }

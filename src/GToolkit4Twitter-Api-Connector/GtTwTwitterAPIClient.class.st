@@ -34,6 +34,18 @@ GtTwTwitterAPIClient >> createGetUserTweetsTimelineRequest: aUserId [
 		userId: aUserId
 ]
 
+{ #category : #'requests creation' }
+GtTwTwitterAPIClient >> createUsersIdFollowersRequest: aUserId [ 
+	^ (GtTwUsersIdFollowersRequest forApiClient:  self)
+		userId: aUserId
+]
+
+{ #category : #'requests creation' }
+GtTwTwitterAPIClient >> createUsersIdFollowingRequest: aUserId [ 
+	^ (GtTwUsersIdFollowingRequest forApiClient:  self)
+		userId: aUserId
+]
+
 { #category : #requests }
 GtTwTwitterAPIClient >> getUserByIdFor: aUserId [
 	^ (self createGetUserByIdRequest: aUserId)
@@ -51,6 +63,20 @@ GtTwTwitterAPIClient >> getUserByUsernameFor: aUsername [
 { #category : #requests }
 GtTwTwitterAPIClient >> getUserTweetsTimelineFor: aUserId [
 	^ (self createGetUserTweetsTimelineRequest: aUserId)
+		withDefaultConfiguration;
+		execute
+]
+
+{ #category : #requests }
+GtTwTwitterAPIClient >> usersIdFollowersRequest: aUserId [
+	^ (self createUsersIdFollowersRequest: aUserId)
+		withDefaultConfiguration;
+		execute
+]
+
+{ #category : #requests }
+GtTwTwitterAPIClient >> usersIdFollowingRequest: aUserId [
+	^ (self createUsersIdFollowingRequest: aUserId)
 		withDefaultConfiguration;
 		execute
 ]

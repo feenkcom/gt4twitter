@@ -2,10 +2,13 @@ Class {
 	#name : #GtTwUser,
 	#superclass : #GtTwEntity,
 	#instVars : [
-		'tweets',
-		'rawUser',
 		'id',
-		'username'
+		'username',
+		'rawUser',
+		'tweets',
+		'followers',
+		'profileImage',
+		'following'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-Model'
 }
@@ -16,9 +19,55 @@ GtTwUser class >> fromRawUser: aRawUser [
 		initializeFromRawUser: aRawUser
 ]
 
+{ #category : #'instance creation' }
+GtTwUser class >> fromRawUser: aRawUser inContext: anApiContext [
+	^ (self forApiContext: anApiContext)
+		initializeFromRawUser: aRawUser
+]
+
+{ #category : #accessing }
+GtTwUser >> description [
+	^ self rawUser description
+]
+
 { #category : #printing }
 GtTwUser >> descriptionOn: aStream [ 
 	aStream << (self name ifNil: ['-']) 
+]
+
+{ #category : #accessing }
+GtTwUser >> downloadPofileImage [
+	^ self rawUser profileImageUrl 
+		ifNotNil: [ :anUrlString |
+			(anUrlString endsWith: '.png')
+				ifTrue: [ ^ ZnEasy getPng: anUrlString ].
+			(anUrlString endsWith: '.jpg')
+				ifTrue: [ ^ ZnEasy getJpeg: anUrlString ].
+			^ nil ]
+]
+
+{ #category : #accessing }
+GtTwUser >> followers [ 
+	^ followers ifNil: [
+		followers := self apiContext usersLoader 
+			getFollowersForUserId: self id ]
+]
+
+{ #category : #'accessing - metrics' }
+GtTwUser >> followersCount [
+	^ self rawUser followersCount
+]
+
+{ #category : #accessing }
+GtTwUser >> following [ 
+	^  following ifNil: [
+		following := self apiContext usersLoader 
+			getFollowingForUserId: self id ]
+]
+
+{ #category : #'accessing - metrics' }
+GtTwUser >> followingCount [
+	^ self rawUser followingCount
 ]
 
 { #category : #'gt - extensions' }
@@ -27,21 +76,55 @@ GtTwUser >> gtViewDetailsFor: aView [
 	
 	^ aView columnedList 
 		title: 'Details';
-		priority: 10;
+		priority: 5;
 		items: [ {} ]
 ]
 
 { #category : #'gt - extensions' }
-GtTwUser >> gtViewTweetsFor: aView [
+GtTwUser >> gtViewFollowersListFor: aView [
 	<gtView>
 	
-	^ aView columnedList 
-		title: 'Tweets';
+	^ aView forward 
+		title: 'Followers List';
+		priority: 55;
+		object: [ self followers ];
+		view: #gtViewUsersListFor:;
+		actionUpdateButton
+]
+
+{ #category : #'gt - extensions' }
+GtTwUser >> gtViewFollowersSummaryUIFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'Followers';
 		priority: 20;
-		items: [ self tweets ];
-		column: 'Created At' text: [ :aTweet | 
-			aTweet createdAt printToSeconds ] width: 180;
-		column: 'Text' text: [ :aTweet | aTweet text ];
+		object: [ self followers ];
+		view: #gtViewUsersSummaryUIFor:;
+		actionUpdateButton
+]
+
+{ #category : #'gt - extensions' }
+GtTwUser >> gtViewFollowingSummaryUIFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'Following';
+		priority: 22;
+		object: [ self following ];
+		view: #gtViewUsersSummaryUIFor:;
+		actionUpdateButton
+]
+
+{ #category : #'gt - extensions' }
+GtTwUser >> gtViewTweetsSummaryUIFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'Tweets';
+		priority: 10;
+		object: [ self tweets ];
+		view: #gtViewTweetsSummaryUIFor:;
 		actionUpdateButton
 ]
 
@@ -64,6 +147,16 @@ GtTwUser >> name [
 ]
 
 { #category : #accessing }
+GtTwUser >> profileImage [ 
+	^ profileImage ifNil: [
+		profileImage := self downloadPofileImage.
+		profileImage ifNil: [
+			profileImage := Form extent: 48@48 depth: 32.
+			profileImage fillColor: (Color veryLightGray).
+			profileImage ] ]
+]
+
+{ #category : #accessing }
 GtTwUser >> rawUser [
 
 	^ rawUser
@@ -75,9 +168,19 @@ GtTwUser >> rawUser: anObject [
 	rawUser := anObject
 ]
 
+{ #category : #'accessing - metrics' }
+GtTwUser >> tweetCount [
+	^ self rawUser tweetCount
+]
+
 { #category : #accessing }
 GtTwUser >> tweets [ 
 	^ tweets ifNil: [
 		tweets := self apiContext tweetsLoader 
-			getTimelineTweetsForUserId: self id ]
+			getTimelineTweetsForUser: self ]
+]
+
+{ #category : #accessing }
+GtTwUser >> username [
+	^ username
 ]

@@ -31,6 +31,6 @@ GtTwTwitterAPIContext >> tweetsLoader [
 ]
 
 { #category : #accessing }
-GtTwTwitterAPIContext >> userLoader [
-	^ GtTwApiUserLoader forApiContext: self
+GtTwTwitterAPIContext >> usersLoader [
+	^ GtTwApiUsersLoader forApiContext: self
 ]

@@ -22,12 +22,29 @@ GtTwRawTweet >> gtViewTextFor: aView [
 		view: #gtStringFor:
 ]
 
+{ #category : #accessing }
+GtTwRawTweet >> likesCount [
+	^ self publicMetrics at: 'like_count' ifAbsent:[ nil ].
+]
+
 { #category : #printing }
 GtTwRawTweet >> printOn: aStream [
 	super printOn: aStream.
 	
 	aStream parenthesize: [
 		aStream print: self text ]
+]
+
+{ #category : #'accessing  - metrics' }
+GtTwRawTweet >> publicMetrics [
+	^ self rawData 
+		at: 'public_metrics' 
+		ifAbsent: [ Dictionary new ]
+]
+
+{ #category : #'accessing  - metrics' }
+GtTwRawTweet >> retweetsCount [
+	^ self publicMetrics at: 'retweet_count' ifAbsent: [ nil ].
 ]
 
 { #category : #accessing }

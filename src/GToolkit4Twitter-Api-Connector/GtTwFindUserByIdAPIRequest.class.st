@@ -3,7 +3,7 @@ nil
 "
 Class {
 	#name : #GtTwFindUserByIdAPIRequest,
-	#superclass : #GtTwUserLookupAPIRequest,
+	#superclass : #GtTwSingleUserLookupAPIRequest,
 	#instVars : [
 		'userId'
 	],

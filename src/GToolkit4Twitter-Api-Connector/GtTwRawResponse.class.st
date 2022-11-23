@@ -3,7 +3,7 @@ nil
 "
 Class {
 	#name : #GtTwRawResponse,
-	#superclass : #GtTwRawData,
+	#superclass : #GtTwRawObject,
 	#instVars : [
 		'data',
 		'includes'

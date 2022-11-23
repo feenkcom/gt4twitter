@@ -3,23 +3,9 @@ nil
 "
 Class {
 	#name : #GtTwRawTweetsGroupResponse,
-	#superclass : #GtTwRawResponse,
-	#instVars : [
-		'metadata'
-	],
+	#superclass : #GtTwRawGroupResponse,
 	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
 }
-
-{ #category : #'gt - extensions' }
-GtTwRawTweetsGroupResponse >> gtViewMetadataFor: aView [
-	<gtView>
-	
-	^ aView forward 
-		title: 'Metadata';
-		priority: 55;
-		object: [ self metadata ];
-		view: #gtRawDataFor:
-]
 
 { #category : #'gt - extensions' }
 GtTwRawTweetsGroupResponse >> gtViewTweetsListFor: aView [
@@ -32,11 +18,6 @@ GtTwRawTweetsGroupResponse >> gtViewTweetsListFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #testing }
-GtTwRawTweetsGroupResponse >> hasNextPaginationToken [
-	^ self metadata hasNotNilKey: 'next_token'
-]
-
 { #category : #initialization }
 GtTwRawTweetsGroupResponse >> initializaFromRawData: aDictionary [
 	super initializaFromRawData: aDictionary.
@@ -44,26 +25,7 @@ GtTwRawTweetsGroupResponse >> initializaFromRawData: aDictionary [
 	self  
 		data: ((aDictionary at: 'data' ifAbsent: [ {} ])
 			collect: [ :aTweetData |
-				GtTwRawTweet fromRawData: aTweetData ]);
-		metadata: (GtTwRawEntity fromRawData: (aDictionary 
-			at: 'meta' ifAbsent: [ Dictionary new ]))
-]
-
-{ #category : #accessing }
-GtTwRawTweetsGroupResponse >> metadata [
-
-	^ metadata
-]
-
-{ #category : #accessing }
-GtTwRawTweetsGroupResponse >> metadata: anObject [
-
-	metadata := anObject
-]
-
-{ #category : #accessing }
-GtTwRawTweetsGroupResponse >> nextPaginationToken [
-	^ self metadata rawDataAt: 'next_token'
+				GtTwRawTweet fromRawData: aTweetData ])
 ]
 
 { #category : #accessing }
