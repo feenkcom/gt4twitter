@@ -14,42 +14,22 @@ Class {
 	#category : #'GToolkit4Twitter-Api-Connector-UI'
 }
 
-{ #category : #initialization }
-GtTwUserSummaryElement >> buildAsyncProfilePictureElement [
-	^ pictureElement := (BrAsyncFileWidget new )
-		exact: 48@48;
-		geometry: (BlCircleGeometry new);
-		margin: (BlInsets right: 10)
+{ #category : #callbacks }
+GtTwUserSummaryElement >> actOnElementDetached [
+	pictureElement actOnElementDetached
 ]
 
-{ #category : #accessing }
+{ #category : #'building  - widgets' }
 GtTwUserSummaryElement >> buildGrayLabel [
 	^ BrLabel new
 		aptitude: (BrGlamorousLabelAptitude new
 			foreground:  Color lightGray)
 ]
 
-{ #category : #initialization }
+{ #category : #'building  - widgets' }
 GtTwUserSummaryElement >> buildProfilePictureElement [
-	^ pictureElement := BrFrame new 
-		exact: 48@48;
-		geometry: (BlCircleGeometry new);
-		margin: (BlInsets right: 10);
-	withAsyncFutureDo: [ :anElementFuture | 
-		anElementFuture
-			whenPending: [ :theContainer | 
-				theContainer
-					removeChildren ];
-			whenError: [ :theContainer :anError | 
-				theContainer
-					removeChildren;
-					addChild:  anError asDebuggableElement matchParent;
-					constraintsDo: [ :c | 
-						c frame horizontal alignCenter.
-						c frame vertical alignCenter ] ];
-			whenSuccess: [ :theContainer :theElement | 
-				theContainer removeChildren.
-				theContainer addChild: theElement ] ]
+	^ pictureElement := GtTwUserPictureElement new
+		margin: (BlInsets right: 10)
 ]
 
 { #category : #'building  - widgets' }
@@ -126,26 +106,29 @@ GtTwUserSummaryElement >> initialize [
 	self addChild: mainContainer
 ]
 
-{ #category : #accessing }
+{ #category : #updating }
 GtTwUserSummaryElement >> updateContent [
 
-	pictureElement asyncFuture 
-		future: [ self user profileImage asElement ] asAsyncFuture.
-
+	pictureElement user: self user.
 
 	userNameLabel text: self user name.
 	userHandleLabel text: '@', self user username.
 	
+	self updateUserDescription.
+	
+	tweetsCountLabel text: self user tweetCount asString, ' Tweets'.
+	followingCountLabel text: self user followingCount asString, ' Following'.
+	followersCountLabel text: self user followersCount asString, ' Followers'.
+]
+
+{ #category : #updating }
+GtTwUserSummaryElement >> updateUserDescription [
 	(self user description 
 		ifEmpty: [
 			descriptionEditor visibility: BlVisibility gone ] 
 		ifNotEmpty:  [
 			 descriptionEditor visibility: BlVisibility visible ]).
 	descriptionEditor text: self user description.
-	
-	tweetsCountLabel text: self user tweetCount asString, ' Tweets'.
-	followingCountLabel text: self user followingCount asString, ' Following'.
-	followersCountLabel text: self user followersCount asString, ' Followers'.
 ]
 
 { #category : #accessing }

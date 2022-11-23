@@ -7,8 +7,8 @@ Class {
 		'rawUser',
 		'tweets',
 		'followers',
-		'profileImage',
-		'following'
+		'following',
+		'profilePictureForm'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-Model'
 }
@@ -147,16 +147,16 @@ GtTwUser >> name [
 ]
 
 { #category : #accessing }
-GtTwUser >> profileImage [ 
-	^ profileImage ifNil: [
-		[profileImage := self downloadPofileImage]
+GtTwUser >> profilePictureForm [ 
+	^ profilePictureForm ifNil: [
+		[profilePictureForm := self downloadPofileImage]
 			
 			on: Error 
-			do: [ profileImage := nil ].
-		profileImage ifNil: [
-			profileImage := Form extent: 48@48 depth: 32.
-			profileImage fillColor: (Color veryLightGray).
-			profileImage ] ]
+			do: [ profilePictureForm := nil ].
+		profilePictureForm ifNil: [
+			profilePictureForm := Form extent: 48@48 depth: 32.
+			profilePictureForm fillColor: (Color veryLightGray).
+			profilePictureForm ] ]
 ]
 
 { #category : #accessing }

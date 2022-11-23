@@ -7,6 +7,11 @@ Class {
 	#category : #'GToolkit4Twitter-Api-Connector-UI'
 }
 
+{ #category : #callbacks }
+GtTwUserSummaryListContainerElement >> actOnElementDetached [
+	userSummaryElement actOnElementDetached
+]
+
 { #category : #initialization }
 GtTwUserSummaryListContainerElement >> initialize [
 	super initialize.

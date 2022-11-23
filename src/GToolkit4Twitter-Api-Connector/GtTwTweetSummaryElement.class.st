@@ -14,14 +14,6 @@ Class {
 	#category : #'GToolkit4Twitter-Api-Connector-UI'
 }
 
-{ #category : #accessing }
-GtTwTweetSummaryElement >> buildAsyncProfilePictureElement [
-	^ pictureElement := (BrAsyncFileWidget new )
-		exact: 48@48;
-		geometry: (BlCircleGeometry new);
-		margin: (BlInsets right: 10)
-]
-
 { #category : #'building widgets' }
 GtTwTweetSummaryElement >> buildGrayLabel [
 	^ BrLabel new
@@ -29,33 +21,10 @@ GtTwTweetSummaryElement >> buildGrayLabel [
 			foreground:  Color lightGray)
 ]
 
-{ #category : #'building widgets' }
-GtTwTweetSummaryElement >> buildGrayLabelWithText: aText [
-	^ self buildGrayLabel
-		text: aText
-]
-
 { #category : #accessing }
 GtTwTweetSummaryElement >> buildProfilePictureElement [
-	^ pictureElement := BrFrame new 
-		exact: 48@48;
-		geometry: (BlCircleGeometry new);
-		margin: (BlInsets right: 10);
-	withAsyncFutureDo: [ :anElementFuture | 
-		anElementFuture
-			whenPending: [ :theContainer | 
-				theContainer
-					removeChildren ];
-			whenError: [ :theContainer :anError | 
-				theContainer
-					removeChildren;
-					addChild:  anError asDebuggableElement matchParent;
-					constraintsDo: [ :c | 
-						c frame horizontal alignCenter.
-						c frame vertical alignCenter ] ];
-			whenSuccess: [ :theContainer :theElement | 
-				theContainer removeChildren.
-				theContainer addChild: theElement ] ]
+	^ pictureElement := GtTwUserPictureElement new
+		margin: (BlInsets right: 10)
 ]
 
 { #category : #initialization }
@@ -145,11 +114,7 @@ GtTwTweetSummaryElement >> tweet: aTweet [
 
 { #category : #accessing }
 GtTwTweetSummaryElement >> updateContent [
-	"pictureElement formBlock: [ 
-		self tweet author profileImage ]."
-	pictureElement
-		removeChildren;
-		addChild: (self tweet author profileImage) asElement.
+	pictureElement user: self tweet author.
 		
 	authorNameLabel text: self tweet author name.
 	authorHandleLabel text: '@', self tweet author  username.
