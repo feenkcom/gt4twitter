@@ -35,6 +35,12 @@ GtTwTwitterAPIClient >> createGetUserTweetsTimelineRequest: aUserId [
 ]
 
 { #category : #'requests creation' }
+GtTwTwitterAPIClient >> createTweetsRecentSearchRequestForQuery: aQueryString [ 
+	^ (GtTwTweetsRecentSearchAPIRequest forApiClient: self)
+		query: aQueryString
+]
+
+{ #category : #'requests creation' }
 GtTwTwitterAPIClient >> createUsersIdFollowersRequest: aUserId [ 
 	^ (GtTwUsersIdFollowersRequest forApiClient:  self)
 		userId: aUserId

@@ -1,6 +1,6 @@
 Class {
 	#name : #GtTwUserTimelineAPIRequest,
-	#superclass : #GtTwTweetsTimelinesAPIRequest,
+	#superclass : #GtTwTweetsUserTimelinesAPIRequest,
 	#category : #'GToolkit4Twitter-Api-Connector-Requests'
 }
 

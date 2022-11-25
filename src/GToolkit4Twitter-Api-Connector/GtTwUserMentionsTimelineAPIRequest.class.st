@@ -3,7 +3,7 @@ nil
 "
 Class {
 	#name : #GtTwUserMentionsTimelineAPIRequest,
-	#superclass : #GtTwTweetsTimelinesAPIRequest,
+	#superclass : #GtTwTweetsUserTimelinesAPIRequest,
 	#category : #'GToolkit4Twitter-Api-Connector-Requests'
 }
 

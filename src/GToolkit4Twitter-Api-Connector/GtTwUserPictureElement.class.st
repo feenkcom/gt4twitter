@@ -67,7 +67,9 @@ GtTwUserPictureElement >> updateContentForUser: aUser [
 	pictureElement formBlock: [ 
 		aUser 
 			ifNil: [ self emptyDefaultForm ]
-			ifNotNil: [ aUser profilePictureForm ]  ].
+			ifNotNil: [ 
+				aUser profilePictureForm
+					ifNil: [self emptyDefaultForm] ]  ].
 		
 	"pictureElement asyncFuture future: [ 
 		aUser profilePictureForm asElement
