@@ -8,9 +8,14 @@ Class {
 }
 
 { #category : #accessing }
+GtTwTwitterAPIConfig class >> defaultServerUrl [
+	^ 'https://api.twitter.com/' asZnUrl
+]
+
+{ #category : #accessing }
 GtTwTwitterAPIConfig class >> forDefaultServer [
 	^ self new
-		serverUrl: 'https://api.twitter.com/' asZnUrl
+		serverUrl: self defaultServerUrl
 ]
 
 { #category : #accessing }
