@@ -4,6 +4,21 @@ Class {
 	#category : #BaselineOfGToolkit4Twitter
 }
 
+{ #category : #loading }
+BaselineOfGToolkit4Twitter class >> loadLepiterKnowledgeBase [ 
+	IceRepository registry  
+		detect: [ :aRepository |
+			aRepository name = 'gt4twitter-experiments' ]
+		ifFound: [ :aRepository | 
+			| defaultDatabase currentProperties |
+			defaultDatabase := LeDatabasesRegistry defaultLogicalDatabase.
+			currentProperties := defaultDatabase properties.
+			currentProperties addRegisteredDirectory: aRepository repositoryDirectory / 'lepiter'.
+			defaultDatabase reload ]
+		ifNone: [
+			self inform: 'Repository not found.' ]
+]
+
 { #category : #baseline }
 BaselineOfGToolkit4Twitter >> baseline: spec [
 	<baseline>
