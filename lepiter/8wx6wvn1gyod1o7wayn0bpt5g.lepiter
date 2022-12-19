@@ -45,7 +45,42 @@
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-11-23T22:44:53.816904+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-11-23T22:52:14.506906+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "YTaT74uqDQCCOJTXB52Tlg=="
+							},
+							"code" : "currentContext := GtTwAppOnlyAPIContext fromClipboard."
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -55,7 +90,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:44:53.816904+01:00"
+						"dateAndTimeString" : "2022-12-19T18:13:02.487746+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,14 +101,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:52:14.506906+01:00"
+						"dateAndTimeString" : "2022-12-19T18:13:03.354583+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "YTaT74uqDQCCOJTXB52Tlg=="
+					"uidString" : "9DCkVJKsDQC8bxikCsZyTg=="
 				},
-				"code" : "currentContext := GtTwAppOnlyAPIContext fromClipboard."
+				"code" : "currentContext := GtTwAppOnlyAPIContext fromEnvVar."
 			},
 			{
 				"__type" : "textSnippet",

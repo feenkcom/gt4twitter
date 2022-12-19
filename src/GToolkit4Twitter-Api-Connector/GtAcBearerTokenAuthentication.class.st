@@ -15,15 +15,19 @@ GtAcBearerTokenAuthentication class >> forBearerToken: aBearerToken [
 
 { #category : #'instance creation' }
 GtAcBearerTokenAuthentication class >> fromClipboard [
-	^ self forBearerToken: GtAcBearerToken fromClipboard
+	^ self forBearerToken: GtAcApiToken fromClipboard
+]
+
+{ #category : #'instance creation' }
+GtAcBearerTokenAuthentication class >> fromEnvVar: aVariableName [
+	^ self forBearerToken: (GtAcEnvVariableToken fromEnvVar: aVariableName)
 ]
 
 { #category : #actions }
 GtAcBearerTokenAuthentication >> applyAuthenticationOn: aZincClient [
 	self assert: [ self bearerToken notNil ].
-	self assert: [ self bearerToken value notNil ].
 	
-	aZincClient setBearerAuthentication: self bearerToken value
+	self bearerToken applyBearerAuthenticationOn: aZincClient.
 ]
 
 { #category : #accessing }

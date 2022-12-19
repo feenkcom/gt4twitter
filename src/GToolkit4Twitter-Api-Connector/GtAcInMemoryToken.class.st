@@ -1,23 +1,27 @@
-"
-nil
-"
 Class {
-	#name : #GtAcBearerToken,
-	#superclass : #Object,
+	#name : #GtAcInMemoryToken,
+	#superclass : #GtAcApiToken,
 	#instVars : [
 		'value'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-Client'
 }
 
-{ #category : #accessing }
-GtAcBearerToken class >> fromClipboard [
+{ #category : #'instance creation' }
+GtAcInMemoryToken class >> fromClipboard [
 	^ self new 
 		value: Clipboard clipboardText asString
 ]
 
+{ #category : #accessing }
+GtAcInMemoryToken >> applyBearerAuthenticationOn: aZincClient [
+	self assert: [ value notNil ].
+	
+	aZincClient setBearerAuthentication: value
+]
+
 { #category : #'gt - extensions' }
-GtAcBearerToken >> gtInspectorVariableNodesIn: aCollection [
+GtAcInMemoryToken >> gtInspectorVariableNodesIn: aCollection [
 	aCollection
 		add: (GtInspectorDynamicNode 
 			hostObject: self 
@@ -26,7 +30,7 @@ GtAcBearerToken >> gtInspectorVariableNodesIn: aCollection [
 ]
 
 { #category : #accessing }
-GtAcBearerToken >> printOn: aStream [
+GtAcInMemoryToken >> printOn: aStream [
 	super printOn: aStream.
 	
 	aStream parenthesize: [
@@ -34,13 +38,7 @@ GtAcBearerToken >> printOn: aStream [
 ]
 
 { #category : #accessing }
-GtAcBearerToken >> value [
-
-	^ value
-]
-
-{ #category : #accessing }
-GtAcBearerToken >> value: aString [
+GtAcInMemoryToken >> value: aString [
 	self 
 		assert: [ aString notNil and: [ value isNil ] ]
 		description: 'Token value is immutable'.

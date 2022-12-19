@@ -12,5 +12,11 @@ GtTwAppOnlyAPIContext class >> forBearerToken: aBearerToken [
 
 { #category : #'instance creation' }
 GtTwAppOnlyAPIContext class >> fromClipboard [
-	^ self forBearerToken: GtAcBearerToken fromClipboard
+	^ self forBearerToken: GtAcApiToken fromClipboard
+]
+
+{ #category : #'instance creation' }
+GtTwAppOnlyAPIContext class >> fromEnvVar [
+	^ self forBearerToken: (GtAcEnvVariableToken 
+		fromEnvVar: 'TWITTER_API_TOKEN') 
 ]

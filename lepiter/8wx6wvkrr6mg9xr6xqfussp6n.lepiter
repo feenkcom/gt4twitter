@@ -82,7 +82,79 @@
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-12-19T18:00:37.822973+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-12-19T18:00:54.777066+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "ctQ5KJKsDQCbrGPzARmJdg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Another way to get the bearer token is to copy it from Clipboard."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-11-23T21:49:35.636393+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-11-23T21:51:07.338077+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "x8vLKYuqDQCBwr4eB52Tlg=="
+							},
+							"code" : "client := GtTwTwitterAPIClient new \r\tconfiguration: (GtTwTwitterAPIConfig forDefaultServer\r\t\tauthentication: (GtAcBearerTokenAuthentication fromClipboard)) "
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -92,7 +164,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T21:49:35.636393+01:00"
+						"dateAndTimeString" : "2022-12-19T17:00:46.671183+02:00"
 					}
 				},
 				"editEmail" : {
@@ -103,14 +175,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T21:51:07.338077+01:00"
+						"dateAndTimeString" : "2022-12-19T18:00:27.070491+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "x8vLKYuqDQCBwr4eB52Tlg=="
+					"uidString" : "lOE0UpGsDQCbqHD5ARmJdg=="
 				},
-				"code" : "client := GtTwTwitterAPIClient new \r\tconfiguration: (GtTwTwitterAPIConfig forDefaultServer\r\t\tauthentication: (GtAcBearerTokenAuthentication fromClipboard)) "
+				"code" : "client := GtTwTwitterAPIClient new \r\tconfiguration: (GtTwTwitterAPIConfig forDefaultServer\r\t\tauthentication: (GtAcBearerTokenAuthentication \r\t\t\tfromEnvVar: 'TWITTER_API_TOKEN'))"
 			},
 			{
 				"__type" : "textSnippet",

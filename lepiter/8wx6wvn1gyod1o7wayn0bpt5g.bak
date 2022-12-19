@@ -242,7 +242,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:57:01.440001+01:00"
+						"dateAndTimeString" : "2022-11-23T22:57:17.351228+01:00"
 					}
 				},
 				"uid" : {
@@ -252,7 +252,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "We can also use a dedicated stream for working wit"
+				"string" : "We can also use, {{gtClass:GtTwTweetsPaginatedLoaderStream}},  a dedicated stream for working with tweets."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -279,14 +279,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:51:49.755873+01:00"
+						"dateAndTimeString" : "2022-11-23T22:57:23.533174+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "B9je7ouqDQCCM8lwB52Tlg=="
 				},
-				"code" : "basicTweetsStream := GtTwTweetsPaginatedLoaderStream new\r\tinitializeWithRequestBuilder: [\r\t\t| getTweetsRequest |\r\t\tgetTweetsRequest := currentContext apiClient \r\t\t\tcreateGetUserTweetsTimelineRequest: '774712256294686721'.\r\t\tgetTweetsRequest withDefaultConfiguration ];\r\tdataInitializer: [ :aRawEntity |\r\t\tGtTwTweet \r\t\t\tfromRawTweet: aRawEntity\r\t\t\tinContext: currentContext ].\r \rtweetsStream := basicTweetsStream cached "
+				"code" : "basicTweetsStream := GtTwTweetsPaginatedLoaderStream new\r\tinitializeWithRequestBuilder: [\r\t\t| getTweetsRequest |\r\t\tgetTweetsRequest := currentContext apiClient \r\t\t\tcreateGetUserTweetsTimelineRequest: '774712256294686721'.\r\t\tgetTweetsRequest withDefaultConfiguration ].\r \rtweetsStream := basicTweetsStream cached "
 			}
 		]
 	},

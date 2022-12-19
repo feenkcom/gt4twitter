@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:05:06.38901+01:00"
+						"dateAndTimeString" : "2022-12-19T18:05:25.422776+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "To download public data about users, we can use an  {{gtClass:GtTwAppOnlyAPIContext}} object."
+				"string" : "To download public data about users, we can use a  {{gtClass:GtTwAppOnlyAPIContext}} object."
 			},
 			{
 				"__type" : "textSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:20:54.45825+01:00"
+						"dateAndTimeString" : "2022-12-19T18:06:57.35449+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,23 +66,95 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:21:19.878067+01:00"
+						"dateAndTimeString" : "2022-12-19T18:07:06.939939+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "HAqmmYuqDQCCAvSkB52Tlg=="
+					"uidString" : "w6bgPpKsDQC8UzbQCsZyTg=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The code below assumes that the bearer token for the Twitter App is copied to clipboard."
+				"string" : "The code below assumes that the bearer token for the Twitter App is in the `TWITTER_API_TOKEN` environmental variable."
 			},
 			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-11-23T22:20:54.45825+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-12-19T18:07:45.828673+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "HAqmmYuqDQCCAvSkB52Tlg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Alternativelty, the bearer token can betaken from clipboard."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-11-23T22:05:08.194337+01:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2022-11-23T22:05:15.203481+01:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "SIBhYYuqDQCB9JQvB52Tlg=="
+							},
+							"code" : "currentContext := GtTwAppOnlyAPIContext fromClipboard."
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -92,7 +164,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:05:08.194337+01:00"
+						"dateAndTimeString" : "2022-12-19T18:07:10.997602+02:00"
 					}
 				},
 				"editEmail" : {
@@ -103,14 +175,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:05:15.203481+01:00"
+						"dateAndTimeString" : "2022-12-19T18:07:21.262601+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "SIBhYYuqDQCB9JQvB52Tlg=="
+					"uidString" : "i+CwP5KsDQC8Vf88CsZyTg=="
 				},
-				"code" : "currentContext := GtTwAppOnlyAPIContext fromClipboard."
+				"code" : "currentContext := GtTwAppOnlyAPIContext fromEnvVar."
 			},
 			{
 				"__type" : "textSnippet",
@@ -137,7 +209,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:20:29.318478+01:00"
+						"dateAndTimeString" : "2022-12-19T18:08:40.624518+02:00"
 					}
 				},
 				"uid" : {
@@ -147,7 +219,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "From the context we can create loaders that we can use to download data,"
+				"string" : "From the context we can create loaders that we can use to download data:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -418,14 +490,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:41:18.567129+01:00"
+						"dateAndTimeString" : "2022-12-19T18:10:55.608255+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "ti8d4YuqDQCCG+uuB52Tlg=="
 				},
-				"code" : "followerUsers := GtTwTweetsGroup withAll: followerUsersStream toArray wait "
+				"code" : "followerUsers := GtTwUsersGroup withAll: followerUsersStream toArray wait "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -452,14 +524,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2022-11-23T22:41:15.328017+01:00"
+						"dateAndTimeString" : "2022-12-19T18:10:58.640838+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "Ss0s4YuqDQCCHQjQB52Tlg=="
 				},
-				"code" : "followingUsers := GtTwTweetsGroup withAll: followingUsersStream toArray wait "
+				"code" : "followingUsers := GtTwUsersGroup withAll: followingUsersStream toArray wait "
 			}
 		]
 	},
