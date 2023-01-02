@@ -12,7 +12,7 @@ GtTwAppOnlyAPIContext class >> forBearerToken: aBearerToken [
 
 { #category : #'instance creation' }
 GtTwAppOnlyAPIContext class >> fromClipboard [
-	^ self forBearerToken: GtAcApiToken fromClipboard
+	^ self forBearerToken: GtAcInMemoryToken fromClipboard
 ]
 
 { #category : #'instance creation' }

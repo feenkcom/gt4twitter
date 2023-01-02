@@ -15,7 +15,7 @@ GtAcBearerTokenAuthentication class >> forBearerToken: aBearerToken [
 
 { #category : #'instance creation' }
 GtAcBearerTokenAuthentication class >> fromClipboard [
-	^ self forBearerToken: GtAcApiToken fromClipboard
+	^ self forBearerToken: GtAcInMemoryToken fromClipboard
 ]
 
 { #category : #'instance creation' }
