@@ -4,7 +4,7 @@
 Metacello new
     repository: 'github://feenkcom/gt4twitter-experiments:main';
     baseline: #GToolkit4Twitter;
-    load
+    load.
 
 #BaselineOfGToolkit4Twitter asClass loadLepiterKnowledgeBase
 ```
