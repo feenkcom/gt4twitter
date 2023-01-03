@@ -71,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-01-03T14:07:10.991015+01:00"
+									"dateAndTimeString" : "2023-01-03T14:30:28.387964+01:00"
 								}
 							},
 							"uid" : {
@@ -81,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Twitter API]]: data can be obtained from Twitte using their API;"
+							"string" : "[[Twitter API]]: data can be obtained from Twitter using their API;"
 						},
 						{
 							"__type" : "textSnippet",
