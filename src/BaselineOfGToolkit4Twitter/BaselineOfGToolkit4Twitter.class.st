@@ -22,5 +22,8 @@ BaselineOfGToolkit4Twitter class >> loadLepiterKnowledgeBase [
 { #category : #baseline }
 BaselineOfGToolkit4Twitter >> baseline: spec [
 	<baseline>
-	spec for: #common do: [ spec package: 'GToolkit4Twitter-Api-Connector' ]
+	
+	spec for: #common do: [ 
+		spec package: 'GToolkit4Twitter-Api-Connector'.
+		spec package: 'GToolkit4Twitter-Archive-Importer' ]
 ]
