@@ -40,7 +40,7 @@ GtTwUser >> downloadPofileImage [
 	^ self rawUser profileImageUrl 
 		ifNotNil: [ :anUrlString |
 			(anUrlString endsWith: '.png')
-				ifTrue: [ ^ ZnEasy getPng: anUrlString ].
+				ifTrue: [ ^ ZnEasy gtGetPng: anUrlString ].
 			(anUrlString endsWith: '.jpg')
 				ifTrue: [ ^ ZnEasy getJpeg: anUrlString ].
 			^ nil ]
