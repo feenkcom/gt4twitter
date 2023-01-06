@@ -12,7 +12,8 @@ GtTwiTweetsGroup >> gtItemsFor: aView [
 		title: 'Tweets';
 		priority: 10;
 		items: [ self ];
-		column: 'Text' text: [ :aTweet | aTweet text ]
+		column: 'Text' text: [ :aTweet | aTweet text ];
+		column: 'Date' text: [ :aTweet | aTweet creationDate ]
 ]
 
 { #category : #accessing }

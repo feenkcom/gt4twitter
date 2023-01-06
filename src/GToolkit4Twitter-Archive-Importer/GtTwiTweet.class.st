@@ -28,6 +28,13 @@ GtTwiTweet >> authorName [
 		ifNotNil: [ :aUser | aUser name ]
 ]
 
+{ #category : #'accessing - metrics' }
+GtTwiTweet >> creationDate [
+	^ self 
+		rawDataAt: 'created_at' 
+		ifAbsent: [ nil ]
+]
+
 { #category : #'gt - extensions' }
 GtTwiTweet >> gtViewTextFor: aView [ 
 	<gtView>
