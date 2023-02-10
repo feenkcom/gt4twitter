@@ -9,7 +9,8 @@ Class {
 		'tweetDateLabel',
 		'authorNameLabel',
 		'authorHandleLabel',
-		'pictureElement'
+		'pictureElement',
+		'mediaContainer'
 	],
 	#category : #'GToolkit4Twitter-Api-Connector-UI'
 }
@@ -55,6 +56,11 @@ GtTwTweetSummaryElement >> buildTweetDetailsElement [
 	^ detailsElement
 ]
 
+{ #category : #initialization }
+GtTwTweetSummaryElement >> buildTweetMediaElement [
+	^ (mediaContainer := BrHorizontalPane new hMatchParent; vExact: 200)
+]
+
 { #category : #'building widgets' }
 GtTwTweetSummaryElement >> buildUserHeaderElement [
 	| headerElement|
@@ -94,6 +100,7 @@ GtTwTweetSummaryElement >> initialize [
 	
 	contentContainer addChild: self buildUserHeaderElement.
 	contentContainer addChild: self buildTweetContentElement.
+	contentContainer addChild: self buildTweetMediaElement.
 	contentContainer addChild: self buildTweetDetailsElement.
 	
 	mainContainer addChild: contentContainer.
@@ -126,11 +133,16 @@ GtTwTweetSummaryElement >> updateAuthorDetails [
 { #category : #accessing }
 GtTwTweetSummaryElement >> updateContent [
 	pictureElement user: self tweet author.
-		
 	self updateAuthorDetails.
-	
 	tweetTextEditor text: self tweet text.
-	
-	likesCountLabel text: self tweet likesCount asString, ' Likes'.
-	retweetsCountLabel text: self tweet retweetsCount asString, ' RT'.
+	self updateMedia.
+	likesCountLabel text: self tweet likesCount asString , ' Likes'.
+	retweetsCountLabel text: self tweet retweetsCount asString , ' RT'
+]
+
+{ #category : #accessing }
+GtTwTweetSummaryElement >> updateMedia [
+	self tweet hasPhotos ifFalse: [ mediaContainer visibility: BlVisibility gone ].
+	(self tweet mediaItems select: #isPhoto)
+		do: [ :each | mediaContainer addChild: each asElement ]
 ]

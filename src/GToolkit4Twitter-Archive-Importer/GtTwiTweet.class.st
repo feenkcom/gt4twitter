@@ -32,7 +32,34 @@ GtTwiTweet >> authorName [
 GtTwiTweet >> creationDate [
 	^ self 
 		rawDataAt: 'created_at' 
+		ifPresent: [ :aString | GtTwiDateParser parse: aString ]
 		ifAbsent: [ nil ]
+]
+
+{ #category : #'accessing - metrics' }
+GtTwiTweet >> creationDateString [
+	^ self 
+		rawDataAt: 'created_at' 
+		ifAbsent: [ nil ]
+]
+
+{ #category : #accessing }
+GtTwiTweet >> gtCardFor: aView [
+	<gtView>
+	^ aView explicit 
+		title: 'Card';
+		priority: 0;
+		stencil: [ GtTwTweetSummaryElement new tweet: self; addAptitude: BrShadowAptitude; background: Color white; margin: (BlInsets all: 10) ]
+]
+
+{ #category : #accessing }
+GtTwiTweet >> gtMediaItemsFor: aView [
+	<gtView>
+	^ aView columnedList 
+		title: 'Media items';
+		items: [ self mediaItems ];
+		column: 'Item' text: [ :each | each gtDisplayString ];
+		column: 'Type' text: #mediaType
 ]
 
 { #category : #'gt - extensions' }
@@ -43,6 +70,16 @@ GtTwiTweet >> gtViewTextFor: aView [
 		title: 'Text';
 		priority: 10;
 		text: [ self text ] 
+]
+
+{ #category : #accessing }
+GtTwiTweet >> hasMediaItems [
+	^ self mediaItems notEmpty
+]
+
+{ #category : #accessing }
+GtTwiTweet >> hasPhotos [
+	^ self mediaItems anySatisfy: #isPhoto
 ]
 
 { #category : #accessing }
@@ -77,6 +114,14 @@ GtTwiTweet >> likesCount [
 { #category : #actions }
 GtTwiTweet >> markAsAd [
 	isAd := true
+]
+
+{ #category : #accessing }
+GtTwiTweet >> mediaItems [
+	| extendedEntitieData mediaData |
+	extendedEntitieData := rawData at: 'extended_entities' ifAbsentPut: [ ^ {} ].
+	mediaData := extendedEntitieData at: 'media' ifAbsentPut: [ ^ {} ].
+	^ mediaData collect: [ :each | GtTwiMediaItem new rawData: each ]
 ]
 
 { #category : #printing }

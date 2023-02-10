@@ -41,3 +41,14 @@ GtTwiEntity >> rawDataAt: aKey ifAbsent: anAbsentBlock [
 		at: aKey
 		ifAbsent: [ anAbsentBlock value ]
 ]
+
+{ #category : #testing }
+GtTwiEntity >> rawDataAt: aKey ifPresent: aPresentBlock ifAbsent: anAbsentBlock [ 
+	self rawData 
+		ifNil: [ ^ anAbsentBlock value ].
+	
+	^ self rawData
+		at: aKey
+		ifPresent: aPresentBlock
+		ifAbsent: anAbsentBlock
+]
