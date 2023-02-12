@@ -5,10 +5,17 @@ Class {
 		'id',
 		'text',
 		'author',
-		'isAd'
+		'isAd',
+		'inReplyToTweet',
+		'replyTweets'
 	],
 	#category : #'GToolkit4Twitter-Archive-Importer'
 }
+
+{ #category : #accessing }
+GtTwiTweet >> addReplyTweet: aTweet [
+	self replyTweets add: aTweet
+]
 
 { #category : #accessing }
 GtTwiTweet >> author [
@@ -46,10 +53,14 @@ GtTwiTweet >> creationDateString [
 { #category : #accessing }
 GtTwiTweet >> gtCardFor: aView [
 	<gtView>
-	^ aView explicit 
+	^ aView explicit
 		title: 'Card';
 		priority: 0;
-		stencil: [ GtTwTweetSummaryElement new tweet: self; addAptitude: BrShadowAptitude; background: Color white; margin: (BlInsets all: 10) ]
+		stencil: [ GtTwTweetSummaryElement new
+				tweet: self;
+				addAptitude: BrShadowAptitude;
+				background: Color white;
+				margin: (BlInsets all: 10) ]
 ]
 
 { #category : #accessing }
@@ -60,6 +71,15 @@ GtTwiTweet >> gtMediaItemsFor: aView [
 		items: [ self mediaItems ];
 		column: 'Item' text: [ :each | each gtDisplayString ];
 		column: 'Type' text: #mediaType
+]
+
+{ #category : #accessing }
+GtTwiTweet >> gtThreadFor: aView [ 
+	<gtView>
+	^ aView mondrian
+		title: 'Thread';
+		painting: [:m | 
+			self paintContainingThreadWith: m]
 ]
 
 { #category : #'gt - extensions' }
@@ -92,9 +112,29 @@ GtTwiTweet >> id: anId [
 	id := anId 
 ]
 
+{ #category : #'as yet unclassified' }
+GtTwiTweet >> inReplyTo [
+	^ inReplyToTweet
+]
+
+{ #category : #'as yet unclassified' }
+GtTwiTweet >> inReplyTo: aGtTwiTweet [ 
+	inReplyToTweet := aGtTwiTweet
+]
+
+{ #category : #accessing }
+GtTwiTweet >> inReplyToStatusId [
+	^ self rawDataAt: 'in_reply_to_status_id' ifAbsent: [ nil ]
+]
+
 { #category : #testing }
 GtTwiTweet >> isAdd [
 	^ isAd ifNil: [ false ]
+]
+
+{ #category : #accessing }
+GtTwiTweet >> isInReplyToStatus [
+	^ self inReplyToStatusId notNil
 ]
 
 { #category : #testing }
@@ -124,6 +164,24 @@ GtTwiTweet >> mediaItems [
 	^ mediaData collect: [ :each | GtTwiMediaItem new rawData: each ]
 ]
 
+{ #category : #accessing }
+GtTwiTweet >> paintContainingThreadWith: m [
+	m nodes
+		stencil: [ :each | 
+			| shadow |
+			shadow := BrShadowAptitude new.
+			each = self ifTrue: [ shadow color: Color blue ].
+			GtTwTweetSummaryElement new
+				tweet: each;
+				addAptitude: shadow;
+				background: Color white;
+				margin: (BlInsets all: 10);
+				when: BlClickEvent do: [ :e | e target phlow spawnObject: each ] ];
+		with: self threadTweets.
+	m edges connectFrom: #inReplyTo.
+	m layout tree levelDistance: 30
+]
+
 { #category : #printing }
 GtTwiTweet >> printOn: aStream [
 	super printOn: aStream.
@@ -132,10 +190,16 @@ GtTwiTweet >> printOn: aStream [
 		aStream << (self text ifNil: [ '' ]) ]
 ]
 
+{ #category : #accessing }
+GtTwiTweet >> replyTweets [
+	^ replyTweets ifNil: [ replyTweets := OrderedCollection new ]
+]
+
 { #category : #'accessing - metrics' }
 GtTwiTweet >> retweetsCount [
 	^ self 
 		rawDataAt: 'retweet_count' 
+		ifPresent: [ :x | x asNumber ]
 		ifAbsent: [ 0 ]
 ]
 
@@ -147,4 +211,12 @@ GtTwiTweet >> text [
 { #category : #accessing }
 GtTwiTweet >> text: aText [
 	text  := aText 
+]
+
+{ #category : #accessing }
+GtTwiTweet >> threadTweets [
+	| allReplyTweets allInReplyTweets |
+	allInReplyTweets := self withDeepCollect: [ :each | each inReplyTo ].
+	allReplyTweets := self deepCollect: [ :each | each replyTweets ].
+	^ allInReplyTweets , allReplyTweets
 ]

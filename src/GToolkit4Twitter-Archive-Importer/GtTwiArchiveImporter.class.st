@@ -2,7 +2,8 @@ Class {
 	#name : #GtTwiArchiveImporter,
 	#superclass : #Object,
 	#instVars : [
-		'dataFolder'
+		'dataFolder',
+		'tweetsById'
 	],
 	#category : #'GToolkit4Twitter-Archive-Importer'
 }
@@ -48,10 +49,13 @@ GtTwiArchiveImporter >> createProfilePicture: profileData [
 
 { #category : #importing }
 GtTwiArchiveImporter >> createTweetFromRawData: aTweetData [
-	^ GtTwiTweet new
-		rawData: aTweetData ;
-		id: (aTweetData at: 'id');
-		text: (aTweetData at: 'full_text')
+	| tweet |
+	tweet := GtTwiTweet new
+			rawData: aTweetData;
+			id: (aTweetData at: 'id');
+			text: (aTweetData at: 'full_text').
+	self tweetsById at: tweet id put: tweet.
+	^ tweet
 ]
 
 { #category : #accessing }
@@ -225,9 +229,15 @@ GtTwiArchiveImporter >> importUser [
 	newUser := GtTwiUser new.
 	self importAccountDataTo: newUser.
 	self importProfileDataTo: newUser.
-	
 	newUser tweets: self importTweets.
-	
+	newUser tweets
+		do: [ :aTweet | 
+			aTweet isInReplyToStatus
+				ifTrue: [ self tweetsById
+						at: aTweet inReplyToStatusId
+						ifPresent: [ :aLinkedTweet | 
+							aTweet inReplyTo: aLinkedTweet.
+							aLinkedTweet addReplyTweet: aTweet ] ] ].
 	^ newUser
 ]
 
@@ -246,6 +256,11 @@ GtTwiArchiveImporter >> profileFile [
 { #category : #'accessing - files' }
 GtTwiArchiveImporter >> profileMediaFolder [
 	^ dataFolder / 'data' / 'profile_media'
+]
+
+{ #category : #importing }
+GtTwiArchiveImporter >> tweetsById [
+	^ tweetsById ifNil: [ tweetsById := Dictionary new ] 
 ]
 
 { #category : #'accessing - files' }

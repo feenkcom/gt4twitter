@@ -142,7 +142,10 @@ GtTwTweetSummaryElement >> updateContent [
 
 { #category : #accessing }
 GtTwTweetSummaryElement >> updateMedia [
-	self tweet hasPhotos ifFalse: [ mediaContainer visibility: BlVisibility gone ].
+	self tweet hasPhotos
+		ifFalse: [ mediaContainer visibility: BlVisibility gone ]
+		ifTrue: [ mediaContainer visibility: BlVisibility visible ].
+	mediaContainer removeChildren.
 	(self tweet mediaItems select: #isPhoto)
 		do: [ :each | mediaContainer addChild: each asElement ]
 ]
