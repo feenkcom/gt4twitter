@@ -46,6 +46,27 @@ GtTwiAccount >> advertisers [
 	^ self relatedUsers advertisers
 ]
 
+{ #category : #accessing }
+GtTwiAccount >> gtByYearFor: aView [
+	<gtView>
+	| byYear theData maxValue |
+	^ aView explicit
+		title: 'By year';
+		stencil: [ byYear := (self accountUser tweets
+					groupedBy: [ :each | each creationDate year ]) associations
+					sorted: [ :a :b | a key < b key ].
+			theData := GtPlotterDataGroup new values: byYear.
+			theData := theData labelled: [ :each | each key ].
+			theData := theData colored: [ :each | Color blue alpha: 0.5 ].
+			maxValue := theData values maxValue: [ :each | each value size ].
+			GtPlotterHorizontalBarChart new
+				barWidthScale: (GtPlotterLinearScale new domainFrom: 0 to: maxValue);
+				barWidthData: [ :eachValue | eachValue value size ];
+				amountOfTicks: 5;
+				with: theData ];
+		send: [:each | GtTwTweetsGroup withAll: each value ]
+]
+
 { #category : #'gt - extensions' }
 GtTwiAccount >> gtViewOverviewFor: aView [
 	<gtView>
