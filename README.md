@@ -10,11 +10,11 @@ To load the project execute the code below in a Pharo snippet.
 
 ```
 Metacello new
-    repository: 'github://feenkcom/gt4twitter-experiments:main';
+    repository: 'github://feenkcom/gt4twitter:main';
     baseline: #GToolkit4Twitter;
     load.
 
-#BaselineOfGToolkit4Twitter asClass loadLepiterKnowledgeBase.
+#BaselineOfGToolkit4Twitter asClass loadLepiter.
 ```
 
 ### Getting Started
