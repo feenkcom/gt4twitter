@@ -47,24 +47,38 @@ GtTwiAccount >> advertisers [
 ]
 
 { #category : #accessing }
-GtTwiAccount >> gtByYearFor: aView [
+GtTwiAccount >> gtByMonthFor: aView [
 	<gtView>
-	| byYear theData maxValue |
+	| byYear theData maxValue stencil |
 	^ aView explicit
-		title: 'By year';
-		stencil: [ byYear := (self accountUser tweets
-					groupedBy: [ :each | each creationDate year ]) associations
-					sorted: [ :a :b | a key < b key ].
+		title: 'By month';
+		priority: 21;
+		stencil: [ | element container |
+			byYear := (self accountUser tweets
+					groupedBy: [ :each | 
+						{each creationDate year.
+							each creationDate month} ]) associations
+					sorted: [ :a :b | 
+						a key first < b key first
+							or: [ a key first = b key first and: [ a key second < b key second ] ] ].
 			theData := GtPlotterDataGroup new values: byYear.
-			theData := theData labelled: [ :each | each key ].
+			theData := theData labelled: [ :each | (each key second printStringPadded: 2) , '.', each key first asString ].
 			theData := theData colored: [ :each | Color blue alpha: 0.5 ].
 			maxValue := theData values maxValue: [ :each | each value size ].
-			GtPlotterHorizontalBarChart new
-				barWidthScale: (GtPlotterLinearScale new domainFrom: 0 to: maxValue);
-				barWidthData: [ :eachValue | eachValue value size ];
-				amountOfTicks: 5;
-				with: theData ];
-		send: [:each | GtTwTweetsGroup withAll: each value ]
+			stencil := GtPlotterHorizontalBarChart new
+					barWidthScale: (GtPlotterLinearScale new domainFrom: 0 to: maxValue);
+					barWidthData: [ :eachValue | eachValue value size ];
+					barLabelFormat: [ :each | each first gtDisplayString ];
+					amountOfTicks: 5;
+					with: theData.
+			element := stencil asElement.
+			container := BrVerticalPane new matchParent.
+			element
+				when: GtPhlowObjectToSpawn
+				do: [ :e | 
+					e consumed: true.
+					container phlow spawnObject: e tool object value ].
+			container addChild: element ]
 ]
 
 { #category : #'gt - extensions' }
