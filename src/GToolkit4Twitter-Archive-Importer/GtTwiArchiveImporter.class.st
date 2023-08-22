@@ -2,20 +2,20 @@ Class {
 	#name : #GtTwiArchiveImporter,
 	#superclass : #Object,
 	#instVars : [
-		'dataFolder',
-		'tweetsById'
+		'tweetsById',
+		'dataDirectory'
 	],
 	#category : #'GToolkit4Twitter-Archive-Importer'
 }
 
 { #category : #'accessing - files' }
 GtTwiArchiveImporter >> accountFile [
-	^ dataFolder / 'data' / 'account.js'
+	^ dataDirectory / 'data' / 'account.js'
 ]
 
 { #category : #'accessing - files' }
 GtTwiArchiveImporter >> adImpressionsFile [
-	^ dataFolder / 'data' / 'ad-impressions.js'
+	^ dataDirectory / 'data' / 'ad-impressions.js'
 ]
 
 { #category : #accessing }
@@ -61,13 +61,13 @@ GtTwiArchiveImporter >> createTweetFromRawData: aTweetData [
 { #category : #accessing }
 GtTwiArchiveImporter >> dataFolder [
 
-	^ dataFolder
+	^ dataDirectory
 ]
 
 { #category : #accessing }
 GtTwiArchiveImporter >> dataFolder: aFileReference [
 
-	dataFolder := aFileReference
+	dataDirectory := aFileReference
 ]
 
 { #category : #importing }
@@ -148,9 +148,8 @@ GtTwiArchiveImporter >> importAccount [
 	| account |
 	account := GtTwiAccount new.
 	account accountUser: self importUser.
-	
+	account dataDirectory: dataDirectory.
 	self importAdImpressionsIntoAccount: account.
-	
 	^ account
 ]
 
@@ -250,12 +249,12 @@ GtTwiArchiveImporter >> parseJsDataFromFile: aDataFile [
 
 { #category : #'accessing - files' }
 GtTwiArchiveImporter >> profileFile [
-	^ dataFolder / 'data' / 'profile.js'
+	^ dataDirectory / 'data' / 'profile.js'
 ]
 
 { #category : #'accessing - files' }
 GtTwiArchiveImporter >> profileMediaFolder [
-	^ dataFolder / 'data' / 'profile_media'
+	^ dataDirectory / 'data' / 'profile_media'
 ]
 
 { #category : #importing }
@@ -265,5 +264,5 @@ GtTwiArchiveImporter >> tweetsById [
 
 { #category : #'accessing - files' }
 GtTwiArchiveImporter >> tweetsFile [
-	^ dataFolder / 'data' / 'tweets.js'
+	^ dataDirectory / 'data' / 'tweets.js'
 ]

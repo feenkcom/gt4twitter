@@ -6,7 +6,8 @@ Class {
 		'relatedUsers',
 		'devices',
 		'targetingCriteria',
-		'adImpressions'
+		'adImpressions',
+		'dataDirectory'
 	],
 	#category : #'GToolkit4Twitter-Archive-Importer'
 }
@@ -47,6 +48,11 @@ GtTwiAccount >> advertisers [
 ]
 
 { #category : #accessing }
+GtTwiAccount >> dataDirectory: aFileReference [
+	dataDirectory := aFileReference
+]
+
+{ #category : #accessing }
 GtTwiAccount >> gtByMonthFor: aView [
 	<gtView>
 	| byYear theData maxValue stencil |
@@ -79,6 +85,15 @@ GtTwiAccount >> gtByMonthFor: aView [
 					e consumed: true.
 					container phlow spawnObject: e tool object value ].
 			container addChild: element ]
+]
+
+{ #category : #accessing }
+GtTwiAccount >> gtDataDirectoryFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Data directory';
+		object: [ dataDirectory ];
+		view: #gtTreeFor:
 ]
 
 { #category : #'gt - extensions' }

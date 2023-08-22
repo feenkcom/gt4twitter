@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-03T14:19:56.110939+01:00"
+						"dateAndTimeString" : "2023-08-21T23:34:39.335681+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "IB60p72tDQCAzqRpDnAhtg=="
 				},
-				"code" : "dataFolder := 'twitter-data' asFileReference"
+				"code" : "dataFolder := '/Users/girba/Work/feenk/Polypoly/TudorGirba-data/twitter-2022-11-20-feenkcom-e87d973aa00a228b0c5dba7c8c35174b7fe55080297ee7e7db4f022ca50c00ef' asFileReference"
 			},
 			{
 				"__type" : "pharoSnippet",
