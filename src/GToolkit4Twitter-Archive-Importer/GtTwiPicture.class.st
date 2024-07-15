@@ -20,18 +20,13 @@ GtTwiPicture >> gtViewPictureFor: aView [
 	
 	^ aView forward 
 		title: 'Picture';
-		object: [ pictureForm ];
-		view: #gtFormFor:
+		object: [ fileName asFileReference ];
+		view: #gtFigureFor:
 ]
 
 { #category : #importing }
-GtTwiPicture >> pictureForm [
-	^ pictureForm
-]
-
-{ #category : #importing }
-GtTwiPicture >> pictureForm: aForm [
-	pictureForm := aForm 
+GtTwiPicture >> pictureElement [
+	^ GtFileUtility imageElementFromFileReference: fileName asFileReference
 ]
 
 { #category : #importing }

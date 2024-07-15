@@ -43,8 +43,7 @@ GtTwiArchiveImporter >> createProfilePicture: profileData [
 
 	^ GtTwiPicture new
 		urlString: urlString;
-		fileName: matchingFiles first fullName;
-		pictureForm: (GtFileUtility imageFromFromFileReference:matchingFiles first)
+		fileName: matchingFiles first fullName
 ]
 
 { #category : #importing }

@@ -14,9 +14,9 @@ GtTwUserPictureElement >> actOnElementDetached [
 
 { #category : #'building - widgets' }
 GtTwUserPictureElement >> buildAsyncPictureElement [
-	^ pictureElement := (BrAsyncFileWidget new )
-		matchParent;
-		geometry: (BlCircleGeometry new)
+	^ pictureElement := BrVerticalPane new
+			matchParent;
+			geometry: BlCircleGeometry new
 ]
 
 { #category : #'building - widgets' }
@@ -64,16 +64,12 @@ GtTwUserPictureElement >> initialize [
 
 { #category : #updating }
 GtTwUserPictureElement >> updateContentForUser: aUser [
-	pictureElement formBlock: [ 
+	pictureElement removeChildren; addChild: (
 		aUser 
-			ifNil: [ self emptyDefaultForm ]
+			ifNil: [ BlElement new ]
 			ifNotNil: [ 
-				aUser profilePictureForm
-					ifNil: [self emptyDefaultForm] ]  ].
-		
-	"pictureElement asyncFuture future: [ 
-		aUser profilePictureForm asElement
-			asScalableElement ] asAsyncFuture."
+				aUser profilePictureElement
+					ifNil: [BlElement new] ] ).
 ]
 
 { #category : #accessing }

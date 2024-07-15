@@ -68,8 +68,9 @@ GtTwiAccount >> gtByMonthFor: aView [
 						a key first < b key first
 							or: [ a key first = b key first and: [ a key second < b key second ] ] ].
 			theData := GtPlotterDataGroup new values: byYear.
-			theData := theData labelled: [ :each | (each key second printStringPadded: 2) , '.', each key first asString ].
-			theData := theData colored: [ :each | Color blue alpha: 0.5 ].
+			theData := theData
+					labelled: [ :each | (each key second printStringPadded: 2) , '.' , each key first asString ].
+			theData := theData background: [ :each | Color blue alpha: 0.5 ].
 			maxValue := theData values maxValue: [ :each | each value size ].
 			stencil := GtPlotterHorizontalBarChart new
 					barWidthScale: (GtPlotterLinearScale new domainFrom: 0 to: maxValue);

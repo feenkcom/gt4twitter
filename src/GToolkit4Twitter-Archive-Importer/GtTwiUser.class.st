@@ -95,9 +95,9 @@ GtTwiUser >> profilePicture: aPicture [
 ]
 
 { #category : #accessing }
-GtTwiUser >> profilePictureForm [
+GtTwiUser >> profilePictureElement [
 	^ profilePicture ifNotNil: [:aPicture |
-		aPicture pictureForm ]
+		aPicture pictureElement ]
 ]
 
 { #category : #accessing }
