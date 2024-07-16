@@ -65,8 +65,8 @@ GtTwiAccount >> gtByMonthFor: aView [
 						{each creationDate year.
 							each creationDate month} ]) associations
 					sorted: [ :a :b | 
-						a key first < b key first
-							or: [ a key first = b key first and: [ a key second < b key second ] ] ].
+						a key first > b key first
+							or: [ a key first = b key first and: [ a key second > b key second ] ] ].
 			theData := GtPlotterDataGroup new values: byYear.
 			theData := theData
 					labelled: [ :each | (each key second printStringPadded: 2) , '.' , each key first asString ].
