@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwiAdImpression,
-	#superclass : #GtTwiEntity,
+	#name : 'GtTwiAdImpression',
+	#superclass : 'GtTwiEntity',
 	#instVars : [
 		'timestamp',
 		'tweet',
@@ -8,46 +8,47 @@ Class {
 		'displayLocation',
 		'matchedTargetingCriteria'
 	],
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 GtTwiAdImpression >> addMatchedCriterion: aCriterion [
 
 	self matchedTargetingCriteria add: aCriterion 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpression >> authorName [
 	^ self tweet 
 		ifNotNil: [ :aTweet | aTweet authorName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpression >> device [
 
 	^ device
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpression >> device: anObject [
 
 	device := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpression >> displayLocation [
 
 	^ displayLocation
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpression >> displayLocation: anObject [
 
 	displayLocation := anObject
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiAdImpression >> gtViewMatchedCriteriasFor: aView [
 	<gtView>
 	
@@ -57,20 +58,20 @@ GtTwiAdImpression >> gtViewMatchedCriteriasFor: aView [
 		view: #gtItemsFor: 
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwiAdImpression >> initialize [
 	super initialize.
 	
 	matchedTargetingCriteria := GtTwiTargetingCriterionGroup new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpression >> matchedTargetingCriteria [
 
 	^ matchedTargetingCriteria
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtTwiAdImpression >> printOn: aStream [ 
 	super printOn: aStream .
 	
@@ -83,13 +84,13 @@ GtTwiAdImpression >> printOn: aStream [
 		aStream << displayLocation ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpression >> tweet [
 
 	^ tweet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpression >> tweet: anObject [
 
 	tweet := anObject

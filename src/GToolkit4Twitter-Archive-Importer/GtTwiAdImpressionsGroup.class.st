@@ -1,15 +1,16 @@
 Class {
-	#name : #GtTwiAdImpressionsGroup,
-	#superclass : #GtTwiEntitiesGroup,
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#name : 'GtTwiAdImpressionsGroup',
+	#superclass : 'GtTwiEntitiesGroup',
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiAdImpressionsGroup >> groupedByAdvertiser [
 	^ self groupedBy: [ :each | each authorName]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAdImpressionsGroup >> gtItemsFor: aView [
 	<gtView>
 	
@@ -23,7 +24,7 @@ GtTwiAdImpressionsGroup >> gtItemsFor: aView [
 			anAdImpression matchedTargetingCriteria size ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiAdImpressionsGroup >> gtViewGroupedByAdvertiserFor: aView [
 	<gtView>
 	

@@ -1,17 +1,18 @@
 Class {
-	#name : #GtTwiMediaItem,
-	#superclass : #GtTwiEntity,
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#name : 'GtTwiMediaItem',
+	#superclass : 'GtTwiEntity',
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiMediaItem >> asElement [
 	^ BrAsyncFileWidget new
 		matchParent;
 		url: self url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiMediaItem >> gtPreviewFor: aView [
 	<gtView>
 	self isPhoto ifFalse: [ ^ aView empty ].
@@ -20,17 +21,17 @@ GtTwiMediaItem >> gtPreviewFor: aView [
 		stencil: [ self asElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiMediaItem >> isPhoto [
 	^ self mediaType = 'photo'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiMediaItem >> mediaType [
 	^ rawData at: 'type'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiMediaItem >> url [
-	^ rawData at: 'media_url'
+	^ rawData at: 'media_url_https'
 ]

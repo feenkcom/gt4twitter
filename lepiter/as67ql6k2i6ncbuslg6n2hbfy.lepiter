@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-21T23:34:39.335681+02:00"
+						"dateAndTimeString" : "2026-05-04T23:25:38.5439+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "IB60p72tDQCAzqRpDnAhtg=="
 				},
-				"code" : "dataFolder := '/Users/girba/Work/feenk/Polypoly/TudorGirba-data/twitter-2022-11-20-feenkcom-e87d973aa00a228b0c5dba7c8c35174b7fe55080297ee7e7db4f022ca50c00ef' asFileReference"
+				"code" : "dataFolder := 'PATH/TO/EXPORT' asFileReference"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -137,48 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-03T14:19:57.550166+01:00"
+						"dateAndTimeString" : "2026-05-04T18:09:05.745563+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "uXBbp72tDQCAyT0tDnAhtg=="
 				},
-				"code" : "importer := GtTwiArchiveImporter new \r\tdataFolder:  dataFolder"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-03T14:19:39.239998+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-01-03T14:19:44.384365+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "ZdotqL2tDQCA0dBVDnAhtg=="
-				},
-				"code" : "importer importAccount"
+				"code" : "importer := GtTwiArchiveImporter new \r\tdataFolder:  dataFolder.\rimporter importAccount"
 			}
 		]
 	},

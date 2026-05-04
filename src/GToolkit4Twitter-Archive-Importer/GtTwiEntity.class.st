@@ -1,13 +1,14 @@
 Class {
-	#name : #GtTwiEntity,
-	#superclass : #Object,
+	#name : 'GtTwiEntity',
+	#superclass : 'Object',
 	#instVars : [
 		'rawData'
 	],
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiEntity >> gtRawDataFor: aView [
 	<gtView>
 	
@@ -20,19 +21,19 @@ GtTwiEntity >> gtRawDataFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiEntity >> rawData [
 
 	^ rawData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiEntity >> rawData: aRawData [
 
 	rawData := aRawData
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtTwiEntity >> rawDataAt: aKey ifAbsent: anAbsentBlock [ 
 	self rawData 
 		ifNil: [ ^ anAbsentBlock value ].
@@ -42,7 +43,7 @@ GtTwiEntity >> rawDataAt: aKey ifAbsent: anAbsentBlock [
 		ifAbsent: [ anAbsentBlock value ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtTwiEntity >> rawDataAt: aKey ifPresent: aPresentBlock ifAbsent: anAbsentBlock [ 
 	self rawData 
 		ifNil: [ ^ anAbsentBlock value ].

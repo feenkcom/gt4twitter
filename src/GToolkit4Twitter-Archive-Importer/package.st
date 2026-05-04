@@ -1,1 +1,1 @@
-Package { #name : #'GToolkit4Twitter-Archive-Importer' }
+Package { #name : 'GToolkit4Twitter-Archive-Importer' }

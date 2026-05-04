@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwiTweet,
-	#superclass : #GtTwiEntity,
+	#name : 'GtTwiTweet',
+	#superclass : 'GtTwiEntity',
 	#instVars : [
 		'id',
 		'text',
@@ -9,33 +9,34 @@ Class {
 		'inReplyToTweet',
 		'replyTweets'
 	],
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> addReplyTweet: aTweet [
 	self replyTweets add: aTweet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> author [
 
 	^ author
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> author: aUser [
 
 	author := aUser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> authorName [
 	^ self author 
 		ifNotNil: [ :aUser | aUser name ]
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwiTweet >> creationDate [
 	^ self 
 		rawDataAt: 'created_at' 
@@ -43,14 +44,14 @@ GtTwiTweet >> creationDate [
 		ifAbsent: [ nil ]
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwiTweet >> creationDateString [
 	^ self 
 		rawDataAt: 'created_at' 
 		ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> gtCardFor: aView [
 	<gtView>
 	^ aView explicit
@@ -63,7 +64,7 @@ GtTwiTweet >> gtCardFor: aView [
 				margin: (BlInsets all: 10) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> gtMediaItemsFor: aView [
 	<gtView>
 	^ aView columnedList 
@@ -73,7 +74,7 @@ GtTwiTweet >> gtMediaItemsFor: aView [
 		column: 'Type' text: #mediaType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> gtThreadFor: aView [ 
 	<gtView>
 	^ aView mondrian
@@ -82,7 +83,7 @@ GtTwiTweet >> gtThreadFor: aView [
 			self paintContainingThreadWith: m]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiTweet >> gtViewTextFor: aView [ 
 	<gtView>
 	
@@ -92,71 +93,71 @@ GtTwiTweet >> gtViewTextFor: aView [
 		text: [ self text ] 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> hasMediaItems [
 	^ self mediaItems notEmpty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> hasPhotos [
 	^ self mediaItems anySatisfy: #isPhoto
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> id: anId [
 	id := anId 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtTwiTweet >> inReplyTo [
 	^ inReplyToTweet
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtTwiTweet >> inReplyTo: aGtTwiTweet [ 
 	inReplyToTweet := aGtTwiTweet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> inReplyToStatusId [
 	^ self rawDataAt: 'in_reply_to_status_id' ifAbsent: [ nil ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtTwiTweet >> isAdd [
 	^ isAd ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> isInReplyToStatus [
 	^ self inReplyToStatusId notNil
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtTwiTweet >> isRetweet [
 	^ (self 
 		rawDataAt: 'retweeted'
 		ifAbsent: [ false ] )or: [ self text beginsWith: 'RT @' ]
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwiTweet >> likesCount [
 	^ self 
 		rawDataAt: 'favorite_count' 
 		ifAbsent: [ 0 ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtTwiTweet >> markAsAd [
 	isAd := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> mediaItems [
 	| extendedEntitieData mediaData |
 	extendedEntitieData := rawData at: 'extended_entities' ifAbsentPut: [ ^ {} ].
@@ -164,7 +165,7 @@ GtTwiTweet >> mediaItems [
 	^ mediaData collect: [ :each | GtTwiMediaItem new rawData: each ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> paintContainingThreadWith: m [
 	m nodes
 		stencil: [ :each | 
@@ -182,7 +183,7 @@ GtTwiTweet >> paintContainingThreadWith: m [
 	m layout tree levelDistance: 30
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtTwiTweet >> printOn: aStream [
 	super printOn: aStream.
 	
@@ -190,12 +191,12 @@ GtTwiTweet >> printOn: aStream [
 		aStream << (self text ifNil: [ '' ]) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> replyTweets [
 	^ replyTweets ifNil: [ replyTweets := OrderedCollection new ]
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwiTweet >> retweetsCount [
 	^ self 
 		rawDataAt: 'retweet_count' 
@@ -203,17 +204,17 @@ GtTwiTweet >> retweetsCount [
 		ifAbsent: [ 0 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> text [
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> text: aText [
 	text  := aText 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweet >> threadTweets [
 	| allReplyTweets allInReplyTweets |
 	allInReplyTweets := self withDeepCollect: [ :each | each inReplyTo ].

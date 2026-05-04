@@ -1,25 +1,22 @@
 Class {
-	#name : #BaselineOfGToolkit4Twitter,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfGToolkit4Twitter
+	#name : 'BaselineOfGToolkit4Twitter',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfGToolkit4Twitter',
+	#package : 'BaselineOfGToolkit4Twitter'
 }
 
-{ #category : #loading }
+{ #category : 'loading' }
 BaselineOfGToolkit4Twitter class >> loadLepiter [ 
 	IceRepository registry  
-		detect: [ :aRepository |
-			aRepository name = 'gt4twitter' ]
+		detect: [ :aRepository | aRepository name = 'gt4twitter' ]
 		ifFound: [ :aRepository | 
-			| defaultDatabase currentProperties |
-			defaultDatabase := LeDatabasesRegistry defaultLogicalDatabase.
-			currentProperties := defaultDatabase properties.
-			currentProperties addRegisteredDirectory: aRepository repositoryDirectory / 'lepiter'.
-			defaultDatabase reload ]
-		ifNone: [
-			self inform: 'Repository not found.' ]
+			LeDatabasesRegistry defaultLogicalDatabase
+				addKnowledgebaseFromDirectory: 
+				aRepository repositoryDirectory / 'lepiter'  ]
+		ifNone: [ self inform: 'Repository not found' ]
 ]
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfGToolkit4Twitter >> baseline: spec [
 	<baseline>
 	

@@ -1,10 +1,11 @@
 Class {
-	#name : #GtTwiTweetsGroup,
-	#superclass : #GtTwiEntitiesGroup,
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#name : 'GtTwiTweetsGroup',
+	#superclass : 'GtTwiEntitiesGroup',
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweetsGroup >> gtItemsFor: aView [ 
 	<gtView>
 	
@@ -17,7 +18,7 @@ GtTwiTweetsGroup >> gtItemsFor: aView [
 		column: 'Likes' text: [ :aTweet | aTweet likesCount = '0' ifTrue: [''] ifFalse: [aTweet likesCount ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweetsGroup >> gtViewTweetsTimelineFor: aView [
 	<gtView>
 	
@@ -30,7 +31,7 @@ GtTwiTweetsGroup >> gtViewTweetsTimelineFor: aView [
 			aTweetElement tweet: aTweet ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTweetsGroup >> retweets [
 	^ self select: #isRetweet
 ]

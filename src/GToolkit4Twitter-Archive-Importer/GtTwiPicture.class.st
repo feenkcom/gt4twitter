@@ -1,20 +1,21 @@
 Class {
-	#name : #GtTwiPicture,
-	#superclass : #Object,
+	#name : 'GtTwiPicture',
+	#superclass : 'Object',
 	#instVars : [
 		'urlString',
 		'fileName',
 		'pictureForm'
 	],
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiPicture >> fileName: aFileName [
 	fileName := aFileName 
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiPicture >> gtViewPictureFor: aView [
 	<gtView>
 	
@@ -24,12 +25,12 @@ GtTwiPicture >> gtViewPictureFor: aView [
 		view: #gtFigureFor:
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiPicture >> pictureElement [
 	^ GtFileUtility imageElementFromFileReference: fileName asFileReference
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiPicture >> urlString: anUrlString [
 	urlString := anUrlString
 ]

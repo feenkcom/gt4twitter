@@ -1,24 +1,25 @@
 Class {
-	#name : #GtTwiArchiveImporter,
-	#superclass : #Object,
+	#name : 'GtTwiArchiveImporter',
+	#superclass : 'Object',
 	#instVars : [
 		'tweetsById',
 		'dataDirectory'
 	],
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #'accessing - files' }
+{ #category : 'accessing - files' }
 GtTwiArchiveImporter >> accountFile [
 	^ dataDirectory / 'data' / 'account.js'
 ]
 
-{ #category : #'accessing - files' }
+{ #category : 'accessing - files' }
 GtTwiArchiveImporter >> adImpressionsFile [
 	^ dataDirectory / 'data' / 'ad-impressions.js'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiArchiveImporter >> atKeys: aKeysArray in: aDictionary ifPresent: aPresentBlock [
 	| currentData |
 	currentData := aDictionary.
@@ -30,7 +31,7 @@ GtTwiArchiveImporter >> atKeys: aKeysArray in: aDictionary ifPresent: aPresentBl
 	currentData at: aKeysArray last ifPresent: aPresentBlock
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> createProfilePicture: profileData [
 	| urlString url matchingFiles |
 	urlString := profileData at: 'avatarMediaUrl'.
@@ -46,7 +47,7 @@ GtTwiArchiveImporter >> createProfilePicture: profileData [
 		fileName: matchingFiles first fullName
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> createTweetFromRawData: aTweetData [
 	| tweet |
 	tweet := GtTwiTweet new
@@ -57,19 +58,19 @@ GtTwiArchiveImporter >> createTweetFromRawData: aTweetData [
 	^ tweet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiArchiveImporter >> dataFolder [
 
 	^ dataDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiArchiveImporter >> dataFolder: aFileReference [
 
 	dataDirectory := aFileReference
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> ensureCriterionFor: aCriterionData into: anAccount [
 	^ anAccount targetingCriteria 
 		detect: [ :aCriterion | 
@@ -85,7 +86,7 @@ GtTwiArchiveImporter >> ensureCriterionFor: aCriterionData into: anAccount [
 			 newCriterion ]
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> ensureTweetForImpression: anImpressionRawData into: anUser [
 	| tweetData |
 	tweetData := anImpressionRawData 
@@ -105,7 +106,7 @@ GtTwiArchiveImporter >> ensureTweetForImpression: anImpressionRawData into: anUs
 			 newTweet ]
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> ensureUserForImpression: anImpressionRawData into: anAccount [
 	| userData username |
 	userData := anImpressionRawData at: 'advertiserInfo'.
@@ -125,14 +126,14 @@ GtTwiArchiveImporter >> ensureUserForImpression: anImpressionRawData into: anAcc
 			newUser ]
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 GtTwiArchiveImporter >> extractJsFileDataFrom: tweetsFile [
 	| fileContents |
 	fileContents := tweetsFile contents.
 	^ fileContents copyFrom: (fileContents indexOf: $[) to: fileContents size
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiArchiveImporter >> gtViewDataDirectoryFor: aView [ 
 	<gtView>
 	
@@ -142,7 +143,7 @@ GtTwiArchiveImporter >> gtViewDataDirectoryFor: aView [
 		view: #gtTreeFor:
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> importAccount [
 	| account |
 	account := GtTwiAccount new.
@@ -152,7 +153,7 @@ GtTwiArchiveImporter >> importAccount [
 	^ account
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> importAccountDataTo: aUser [
 	| accountFile accountData |
 	accountFile := self accountFile.
@@ -164,7 +165,7 @@ GtTwiArchiveImporter >> importAccountDataTo: aUser [
 		displayName:  (accountData at: 'accountDisplayName').
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> importAdImpression: anImpressionRawData into: anAccount [
 	| tweet advertiser impression |
 	advertiser := self ensureUserForImpression: anImpressionRawData into: anAccount.
@@ -184,7 +185,7 @@ GtTwiArchiveImporter >> importAdImpression: anImpressionRawData into: anAccount 
 
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> importAdImpressionsIntoAccount: anAccount [
 	| adImpressionsFile impressionsData |
 	adImpressionsFile := self adImpressionsFile.
@@ -201,7 +202,7 @@ GtTwiArchiveImporter >> importAdImpressionsIntoAccount: anAccount [
 						into: anAccount ] ] ]
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> importProfileDataTo: aUser [
 	| profileFile profileData |
 	profileFile := self profileFile.
@@ -210,7 +211,7 @@ GtTwiArchiveImporter >> importProfileDataTo: aUser [
 	aUser profilePicture: (self createProfilePicture: profileData)
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> importTweets [
 	| tweetsFile tweetsData |
 	tweetsFile := self tweetsFile.
@@ -221,7 +222,7 @@ GtTwiArchiveImporter >> importTweets [
 			self createTweetFromRawData: (aTweetData  at: 'tweet') ])
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> importUser [
 	| newUser |
 	newUser := GtTwiUser new.
@@ -239,29 +240,29 @@ GtTwiArchiveImporter >> importUser [
 	^ newUser
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 GtTwiArchiveImporter >> parseJsDataFromFile: aDataFile [
 	| fileContents |
 	fileContents := self extractJsFileDataFrom: aDataFile.
 	^ STONJSON fromString: fileContents
 ]
 
-{ #category : #'accessing - files' }
+{ #category : 'accessing - files' }
 GtTwiArchiveImporter >> profileFile [
 	^ dataDirectory / 'data' / 'profile.js'
 ]
 
-{ #category : #'accessing - files' }
+{ #category : 'accessing - files' }
 GtTwiArchiveImporter >> profileMediaFolder [
 	^ dataDirectory / 'data' / 'profile_media'
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtTwiArchiveImporter >> tweetsById [
 	^ tweetsById ifNil: [ tweetsById := Dictionary new ] 
 ]
 
-{ #category : #'accessing - files' }
+{ #category : 'accessing - files' }
 GtTwiArchiveImporter >> tweetsFile [
 	^ dataDirectory / 'data' / 'tweets.js'
 ]

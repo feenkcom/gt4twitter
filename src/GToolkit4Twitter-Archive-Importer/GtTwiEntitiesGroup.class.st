@@ -1,12 +1,13 @@
 Class {
-	#name : #GtTwiEntitiesGroup,
-	#superclass : #Object,
+	#name : 'GtTwiEntitiesGroup',
+	#superclass : 'Object',
 	#traits : 'TGtGroup + TGtGroupItems',
 	#classTraits : 'TGtGroup classTrait + TGtGroupItems classTrait',
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiEntitiesGroup >> groupedBy: aBlock [ 
 	"We are reimplementing this method here and not reuse the one in collection
 	because we want the keys to be groups, not simple collections"
@@ -24,7 +25,7 @@ GtTwiEntitiesGroup >> groupedBy: aBlock [
 	^result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiEntitiesGroup >> select: aBlock [
 	^ self species withAll: (self items select: aBlock)
 ]

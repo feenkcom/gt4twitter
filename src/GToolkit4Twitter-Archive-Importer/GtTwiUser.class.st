@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwiUser,
-	#superclass : #GtTwiEntity,
+	#name : 'GtTwiUser',
+	#superclass : 'GtTwiEntity',
 	#instVars : [
 		'id',
 		'username',
@@ -9,10 +9,11 @@ Class {
 		'tweets',
 		'isAdvertiser'
 	],
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 GtTwiUser >> addTweet: aTweet [
 	self assert: [ aTweet author isNil ].
 	 
@@ -20,12 +21,20 @@ GtTwiUser >> addTweet: aTweet [
 	aTweet author: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> displayName: aString [ 
 	displayName := aString
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'printing' }
+GtTwiUser >> gtDisplayOn: aStream [
+	aStream
+		<< displayName;
+		<< ', @';
+		<< username
+]
+
+{ #category : 'gt - extensions' }
 GtTwiUser >> gtViewTweetsListFor: aView [
 	<gtView>
 	
@@ -38,7 +47,7 @@ GtTwiUser >> gtViewTweetsListFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiUser >> gtViewTweetsTimelineFor: aView [
 	<gtView>
 	
@@ -51,34 +60,34 @@ GtTwiUser >> gtViewTweetsTimelineFor: aView [
 		view: #gtViewTweetsTimelineFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> id: anId [
 	id := anId 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> initialize [
 	super initialize.
 	
 	tweets := GtTwiTweetsGroup new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtTwiUser >> isAdvertiser [
 	^ isAdvertiser ifNil: [ false ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtTwiUser >> markAsAdvertiser [
 	isAdvertiser := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> name [ 
 	^ displayName
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtTwiUser >> printOn: aStream [
 	super printOn: aStream.
 	
@@ -89,23 +98,23 @@ GtTwiUser >> printOn: aStream [
 			<< username ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> profilePicture: aPicture [ 
 	profilePicture := aPicture 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> profilePictureElement [
 	^ profilePicture ifNotNil: [:aPicture |
 		aPicture pictureElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> tweets [
 	^ tweets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> tweets: aTweetsGroup [ 
 	tweets := aTweetsGroup.
 	
@@ -113,12 +122,12 @@ GtTwiUser >> tweets: aTweetsGroup [
 		aTweet author: self ] 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> username [
 	^ username
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUser >> username: aString [ 
 	username := aString
 ]

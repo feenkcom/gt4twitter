@@ -1,16 +1,17 @@
 Class {
-	#name : #GtTwiUsersGroup,
-	#superclass : #GtTwiEntitiesGroup,
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#name : 'GtTwiUsersGroup',
+	#superclass : 'GtTwiEntitiesGroup',
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiUsersGroup >> advertisers [
 	^ self select: [ :aUser |
 		aUser isAdvertiser ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiUsersGroup >> gtItemsFor: aView [
 	<gtView>
 	

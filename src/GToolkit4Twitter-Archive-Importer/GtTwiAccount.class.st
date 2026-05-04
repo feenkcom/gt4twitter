@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwiAccount,
-	#superclass : #Object,
+	#name : 'GtTwiAccount',
+	#superclass : 'Object',
 	#instVars : [
 		'accountUser',
 		'relatedUsers',
@@ -9,50 +9,51 @@ Class {
 		'adImpressions',
 		'dataDirectory'
 	],
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> accountUser [
 	^ accountUser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> accountUser: aUser [
 	accountUser := aUser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> adImpressions [
 	^ adImpressions
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GtTwiAccount >> addAdImpression: anAdImpression [
 	self adImpressions add: anAdImpression
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GtTwiAccount >> addRelatedUser: aUser [
 	self relatedUsers add: aUser
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 GtTwiAccount >> addTargetingCriterion: aCriterion [
 	self targetingCriteria add: aCriterion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> advertisers [ 
 	^ self relatedUsers advertisers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> dataDirectory: aFileReference [
 	dataDirectory := aFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> gtByMonthFor: aView [
 	<gtView>
 	| byYear theData maxValue stencil |
@@ -88,7 +89,7 @@ GtTwiAccount >> gtByMonthFor: aView [
 			container addChild: element ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> gtDataDirectoryFor: aView [
 	<gtView>
 	^ aView forward
@@ -97,7 +98,12 @@ GtTwiAccount >> gtDataDirectoryFor: aView [
 		view: #gtTreeFor:
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'as yet unclassified' }
+GtTwiAccount >> gtDisplayOn: aStream [
+	accountUser gtDisplayOn: aStream
+]
+
+{ #category : 'gt - extensions' }
 GtTwiAccount >> gtViewOverviewFor: aView [
 	<gtView>
 	
@@ -110,7 +116,7 @@ GtTwiAccount >> gtViewOverviewFor: aView [
 		send: [ :assoc | assoc value ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiAccount >> gtViewTweetsTimelineFor: aView [
 	<gtView>
 	
@@ -121,7 +127,7 @@ GtTwiAccount >> gtViewTweetsTimelineFor: aView [
 		view: #gtViewTweetsTimelineFor:
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwiAccount >> initialize [
 	super initialize.
 	
@@ -130,7 +136,7 @@ GtTwiAccount >> initialize [
 	adImpressions := GtTwiAdImpressionsGroup new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> overviewData [
 	^ {
 		'Related Users' -> self relatedUsers.
@@ -138,12 +144,12 @@ GtTwiAccount >> overviewData [
 		'Ad Targeting Criteria' -> self targetingCriteria }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> relatedUsers [
 	^ relatedUsers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiAccount >> targetingCriteria [
 	^ targetingCriteria
 ]

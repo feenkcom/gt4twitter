@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwiDateParser,
-	#superclass : #PP2CompositeNode,
+	#name : 'GtTwiDateParser',
+	#superclass : 'PP2CompositeNode',
 	#instVars : [
 		'weekday',
 		'month',
@@ -12,31 +12,32 @@ Class {
 		'year',
 		'parser'
 	],
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> day [
 	^ (#digit asPParser times: 2) flatten ==> #asNumber
 ]
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> hour [
 	^ (#digit asPParser times: 2) flatten ==> #asNumber
 ]
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> minute [
 	^ (#digit asPParser times: 2) flatten ==> #asNumber
 ]
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> month [
 	^ (#letter asPParser times: 3) flatten
 		==> [ :t | (Date monthNames collect: [ :each | each first: 3 ]) indexOf: t ]
 ]
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> parser [
 	^ (weekday trim , month trim , day trim , hour , ':' asPParser , minute
 		, ':' asPParser , second , timezone trim , year)
@@ -50,27 +51,27 @@ GtTwiDateParser >> parser [
 				second: t eighth ]
 ]
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> second [
 	^ (#digit asPParser times: 2) flatten ==> #asNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiDateParser >> start [
 	^ parser
 ]
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> timezone [
 	^ '+' asPParser / '-' asPParser , (#digit asPParser times: 4) flatten
 ]
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> weekday [
 	^ #letter asPParser times: 3
 ]
 
-{ #category : #grammar }
+{ #category : 'grammar' }
 GtTwiDateParser >> year [
 	^ (#digit asPParser times: 4) flatten ==> #asNumber
 ]

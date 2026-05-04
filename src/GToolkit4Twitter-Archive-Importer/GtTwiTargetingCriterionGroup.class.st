@@ -1,15 +1,16 @@
 Class {
-	#name : #GtTwiTargetingCriterionGroup,
-	#superclass : #GtTwiEntitiesGroup,
-	#category : #'GToolkit4Twitter-Archive-Importer'
+	#name : 'GtTwiTargetingCriterionGroup',
+	#superclass : 'GtTwiEntitiesGroup',
+	#category : 'GToolkit4Twitter-Archive-Importer',
+	#package : 'GToolkit4Twitter-Archive-Importer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwiTargetingCriterionGroup >> groupedByCriterionType [
 	^ self groupedBy: [ :each | each criterionType ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiTargetingCriterionGroup >> gtItemsFor: aView [ 
 	<gtView>
 	
@@ -20,7 +21,7 @@ GtTwiTargetingCriterionGroup >> gtItemsFor: aView [
 		column: 'Value' text: [ :aCriterion | aCriterion criterionValue ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwiTargetingCriterionGroup >> gtViewGroupedByCriterionTypeFor: aView [
 	<gtView>
 	
