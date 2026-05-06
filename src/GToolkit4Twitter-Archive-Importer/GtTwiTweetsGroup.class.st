@@ -14,8 +14,8 @@ GtTwiTweetsGroup >> gtItemsFor: aView [
 		priority: 10;
 		items: [ self ];
 		column: 'Text' text: [ :aTweet | aTweet text ];
-		column: 'Date' text: [ :aTweet | aTweet creationDate printString ];
-		column: 'Likes' text: [ :aTweet | aTweet likesCount = '0' ifTrue: [''] ifFalse: [aTweet likesCount ] ]
+		column: 'Date' text: [ :aTweet | aTweet creationDate asLocalStringYMDHM ] width: 100;
+		column: 'Likes' text: [ :aTweet | aTweet likesCount = '0' ifTrue: [''] ifFalse: [aTweet likesCount ] ] width: 50
 ]
 
 { #category : 'accessing' }

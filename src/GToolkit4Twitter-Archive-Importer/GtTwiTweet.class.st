@@ -183,6 +183,11 @@ GtTwiTweet >> paintContainingThreadWith: m [
 	m layout tree levelDistance: 30
 ]
 
+{ #category : 'accessing' }
+GtTwiTweet >> photos [
+	^ self mediaItems select: #isPhoto
+]
+
 { #category : 'printing' }
 GtTwiTweet >> printOn: aStream [
 	super printOn: aStream.
