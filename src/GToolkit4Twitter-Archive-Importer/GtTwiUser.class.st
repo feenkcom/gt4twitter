@@ -34,6 +34,16 @@ GtTwiUser >> gtDisplayOn: aStream [
 		<< username
 ]
 
+{ #category : 'views' }
+GtTwiUser >> gtPhotosFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Photos';
+		priority: 20;
+		object: [ self photos ];
+		view: #gtViewFor:
+]
+
 { #category : 'gt - extensions' }
 GtTwiUser >> gtViewTweetsListFor: aView [
 	<gtView>
@@ -116,7 +126,7 @@ GtTwiUser >> profilePictureElement [
 
 { #category : 'accessing' }
 GtTwiUser >> tweets [
-	^ tweets sorted: [:a :b | a creationDate > b creationDate ]
+	^ tweets
 ]
 
 { #category : 'accessing' }

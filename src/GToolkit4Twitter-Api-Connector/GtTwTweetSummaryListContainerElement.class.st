@@ -12,17 +12,16 @@ Class {
 { #category : 'initialization' }
 GtTwTweetSummaryListContainerElement >> initialize [
 	super initialize.
-	
-	self 
+
+	self
 		hMatchParent;
 		vFitContent;
 		alignCenter.
-	
-	self addChild: (tweetSummaryElement := GtTwTweetSummaryElement new).
-	self addChild: (BrFrame new 
-		hExact: 450;
-		vFitContent;
-		background: Color veryLightGray  muchLighter )
+	self
+		addChild: (tweetSummaryElement := GtTwTweetSummaryElement new
+					addAptitude: BrShadowAptitude;
+					background: Color white;
+					margin: (BlInsets all: 10))
 ]
 
 { #category : 'accessing' }

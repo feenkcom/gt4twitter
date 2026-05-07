@@ -18,6 +18,15 @@ GtTwiTweetsGroup >> gtItemsFor: aView [
 		column: 'Likes' text: [ :aTweet | aTweet likesCount = '0' ifTrue: [''] ifFalse: [aTweet likesCount ] ] width: 50
 ]
 
+{ #category : 'views' }
+GtTwiTweetsGroup >> gtViewFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Photos';
+		object: [ self photos ];
+		view: #gtViewFor:
+]
+
 { #category : 'accessing' }
 GtTwiTweetsGroup >> gtViewTweetsTimelineFor: aView [
 	<gtView>

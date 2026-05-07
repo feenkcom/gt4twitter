@@ -24,12 +24,12 @@ GtTwiMediaItemGroup >> gtViewFor: aView [
 		title: 'Photos';
 		priority: 1;
 		stencil: [ BrFlowList new
-				items: (items first: 100);
+				items: (items);
 				margin: (BlInsets all: 10);
 				matchParent;
 				stencil: [ :each | 
 					each asElement
-						size: 400 @ 240;
+						size: 250 @ 180;
 						when: BlClickEvent do: [ :e | e target phlow spawnObject: each ];
 						margin: (BlInsets all: 10) ] ]
 ]

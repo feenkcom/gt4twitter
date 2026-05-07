@@ -58,8 +58,8 @@ GtTwiAccount >> gtByMonthFor: aView [
 	<gtView>
 	| byYear theData maxValue stencil |
 	^ aView explicit
-		title: 'By month';
-		priority: 21;
+		title: 'Tweets by month';
+		priority: 9;
 		stencil: [ | element container |
 			byYear := (self accountUser tweets
 					groupedBy: [ :each | 
@@ -122,7 +122,7 @@ GtTwiAccount >> gtViewTweetsTimelineFor: aView [
 	
 	^ aView forward 
 		title: 'Tweets';
-		priority: 20;
+		priority: 1;
 		object: [ self accountUser ];
 		view: #gtViewTweetsTimelineFor:
 ]
