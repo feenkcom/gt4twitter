@@ -2,12 +2,14 @@
 nil
 "
 Class {
-	#name : #GtTwRawTweetsGroupResponse,
-	#superclass : #GtTwRawGroupResponse,
-	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
+	#name : 'GtTwRawTweetsGroupResponse',
+	#superclass : 'GtTwRawGroupResponse',
+	#category : 'GToolkit4Twitter-Api-Connector-Model-Basic',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model-Basic'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwRawTweetsGroupResponse >> gtViewTweetsListFor: aView [
 	<gtView>
 	
@@ -18,7 +20,7 @@ GtTwRawTweetsGroupResponse >> gtViewTweetsListFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwRawTweetsGroupResponse >> initializaFromRawData: aDictionary [
 	super initializaFromRawData: aDictionary.
 	
@@ -28,7 +30,7 @@ GtTwRawTweetsGroupResponse >> initializaFromRawData: aDictionary [
 				GtTwRawTweet fromRawData: aTweetData ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawTweetsGroupResponse >> printOn: aStream [
 	super printOn: aStream.
 	
@@ -40,12 +42,12 @@ GtTwRawTweetsGroupResponse >> printOn: aStream [
 		nextPut: $] 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawTweetsGroupResponse >> tweetsCount [
 	^ self tweetsGroup size
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawTweetsGroupResponse >> tweetsGroup [
 	^ self data
 ]

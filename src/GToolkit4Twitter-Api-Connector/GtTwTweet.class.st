@@ -1,46 +1,48 @@
 Class {
-	#name : #GtTwTweet,
-	#superclass : #GtTwEntity,
+	#name : 'GtTwTweet',
+	#superclass : 'GtTwEntity',
 	#instVars : [
 		'rawTweet',
 		'author'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Model'
+	#category : 'GToolkit4Twitter-Api-Connector-Model',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwTweet class >> fromRawTweet: aRawTweet [
 	^ self new 
 		rawTweet: aRawTweet
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwTweet class >> fromRawTweet: aRawTweet inContext: anApiContext [
 	^ (self forApiContext: anApiContext)
 		rawTweet: aRawTweet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweet >> author [
 	^ author
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweet >> author: aUser [
 	author := aUser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweet >> createdAt [
 	^ self rawTweet createdAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweet >> descriptionOn: aStream [ 
 	aStream << self text
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwTweet >> gtRawDataFor: aView [
 	<gtView>
 	
@@ -53,7 +55,7 @@ GtTwTweet >> gtRawDataFor: aView [
 		view: #gtRawDataFor:
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwTweet >> gtViewTextFor: aView [
 	<gtView>
 	
@@ -66,29 +68,29 @@ GtTwTweet >> gtViewTextFor: aView [
 		view: #gtStringFor:
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwTweet >> likesCount [
 	^ self rawTweet likesCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweet >> rawTweet [
 
 	^ rawTweet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweet >> rawTweet: aRawTweet [
 
 	rawTweet := aRawTweet
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwTweet >> retweetsCount [
 	^ self rawTweet retweetsCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweet >> text [
 	^ self rawTweet text
 ]

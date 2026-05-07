@@ -1,15 +1,17 @@
 Class {
-	#name : #GtTwUserTweetsTimelineAPIRequest,
-	#superclass : #GtTwTweetsUserTimelinesAPIRequest,
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#name : 'GtTwUserTweetsTimelineAPIRequest',
+	#superclass : 'GtTwTweetsUserTimelinesAPIRequest',
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserTweetsTimelineAPIRequest >> pathSegments [
 	^ super pathSegments, { 'tweets' }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserTweetsTimelineAPIRequest >> responseType [
 	^ GtTwGet2UsersIdTweetsResponse
 ]

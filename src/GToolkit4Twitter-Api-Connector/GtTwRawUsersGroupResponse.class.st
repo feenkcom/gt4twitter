@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwRawUsersGroupResponse,
-	#superclass : #GtTwRawGroupResponse,
-	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
+	#name : 'GtTwRawUsersGroupResponse',
+	#superclass : 'GtTwRawGroupResponse',
+	#category : 'GToolkit4Twitter-Api-Connector-Model-Basic',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model-Basic'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwRawUsersGroupResponse >> initializaFromRawData: aDictionary [
 	super initializaFromRawData: aDictionary.
 	

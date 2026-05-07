@@ -1,55 +1,57 @@
 Class {
-	#name : #GtAcBasicAPIClient,
-	#superclass : #Object,
+	#name : 'GtAcBasicAPIClient',
+	#superclass : 'Object',
 	#instVars : [
 		'configuration'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Client'
+	#category : 'GToolkit4Twitter-Api-Connector-Client',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Client'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIClient >> authentication [
 	^ configuration authentication
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIClient >> authorizedZnClient [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIClient >> configuration: aConfiguration [
 	self assert: [ aConfiguration notNil ].
 	configuration := aConfiguration
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 GtAcBasicAPIClient >> emitErrorFor: anError [
 	 GtAcZincErrorSignal  new 	
 		wrappedError: anError;
 		emit
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 GtAcBasicAPIClient >> emitRequestFor: znClient [
 	 GtAcZincRequestSignal new 	
 		request: znClient request;
 		emit
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 GtAcBasicAPIClient >> emitResponseFor: znClient [
 	 GtAcZincResponseSignal new 	
 		response: znClient response;
 		emit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIClient >> serverUrl [
 	^ configuration serverUrl 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIClient >> znClient [
 	^ ZnClient new
 ]

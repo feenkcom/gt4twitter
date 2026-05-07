@@ -1,6 +1,6 @@
 Class {
-	#name : #GtAcBasicAPIRequest,
-	#superclass : #Object,
+	#name : 'GtAcBasicAPIRequest',
+	#superclass : 'Object',
 	#instVars : [
 		'apiClient',
 		'zincRequest',
@@ -10,31 +10,33 @@ Class {
 		'queryFields',
 		'timestamp'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtAcBasicAPIRequest class >> forApiClient: anApiClient [
 	^ self new
 		apiClient: anApiClient
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> apiClient [
 
 	^ apiClient
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> apiClient: anApiClient [
 	apiClient := anApiClient
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> applyCustomHeadersFor: aZincClient [
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> authorizedZnClient [
 	| zincClient |
 	zincClient := self apiClient authorizedZnClient.
@@ -45,7 +47,7 @@ GtAcBasicAPIRequest >> authorizedZnClient [
 	^ zincClient
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 GtAcBasicAPIRequest >> basicExecute [ 
 	| zincClient |
 	
@@ -62,7 +64,7 @@ GtAcBasicAPIRequest >> basicExecute [
 		contents: zincClient contents.
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 GtAcBasicAPIRequest >> basicExecuteWithErrorHandling [ 
 	^ [ self basicExecute ] 
 		on: Error 
@@ -72,27 +74,27 @@ GtAcBasicAPIRequest >> basicExecuteWithErrorHandling [
 				exception: anError ] 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> configuredZincClient [
 	^ self subclassResponsibility
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 GtAcBasicAPIRequest >> emitErrorFor: anError [
 	self apiClient emitErrorFor: anError
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 GtAcBasicAPIRequest >> emitRequestFor: znClient [
 	self apiClient emitRequestFor: znClient
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 GtAcBasicAPIRequest >> emitResponseFor: znClient [
 	self apiClient emitResponseFor: znClient
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 GtAcBasicAPIRequest >> execute [ 
 	| currentResponse returnValue| 
 	currentResponse := self basicExecute.
@@ -104,7 +106,7 @@ GtAcBasicAPIRequest >> execute [
 		returnedValue: returnValue
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 GtAcBasicAPIRequest >> executeWithErrorHandling [ 
 	| currentResponse resultValue | 
 	
@@ -124,7 +126,7 @@ GtAcBasicAPIRequest >> executeWithErrorHandling [
 		returnedValue: resultValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> formattedQueryValueFor: aValue [ 
 
 	aValue isString ifTrue: [
@@ -137,7 +139,7 @@ GtAcBasicAPIRequest >> formattedQueryValueFor: aValue [
 	^ aValue asString
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtAcBasicAPIRequest >> gtViewJsonResponseFor: aView [ 
 	<gtView>
 	
@@ -149,7 +151,7 @@ GtAcBasicAPIRequest >> gtViewJsonResponseFor: aView [
 		view: #gtJsonFor:
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtAcBasicAPIRequest >> gtViewQueryParametersFor: aView [ 
 	<gtView>
 	
@@ -159,7 +161,7 @@ GtAcBasicAPIRequest >> gtViewQueryParametersFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtAcBasicAPIRequest >> gtViewRequestUrlFor: aView [
 	<gtView>
 	
@@ -171,24 +173,24 @@ GtAcBasicAPIRequest >> gtViewRequestUrlFor: aView [
 		view: #gtUrlFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> httpMethod [
 	self subclassResponsibility
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtAcBasicAPIRequest >> initialize [
 	super initialize.
 	
 	queryFields := OrderedDictionary new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> parserResponseContents: aContent [
 	^ aContent
 ]
 
-{ #category : #execution }
+{ #category : 'execution' }
 GtAcBasicAPIRequest >> performZincCall [ 
 	| zincClient |
 	
@@ -205,37 +207,37 @@ GtAcBasicAPIRequest >> performZincCall [
 	^ zincClient 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> queryParameterAt: aKey [
 	^ queryFields at: aKey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> queryParameterAt: aKey ifAbsentPut: aBlock [
 	queryFields at: aKey ifAbsentPut: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> queryParameterAt: aKey put: aValue [
 	queryFields at: aKey put: aValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> requestResult [
 	^ requestResult
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> serverUrl [
 	^ self apiClient serverUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> timestamp [
 	^ timestamp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIRequest >> zincResponse [
 	^ requestResponse zincResponse
 ]

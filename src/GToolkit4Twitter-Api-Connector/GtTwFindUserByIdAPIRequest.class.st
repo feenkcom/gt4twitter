@@ -2,31 +2,33 @@
 nil
 "
 Class {
-	#name : #GtTwFindUserByIdAPIRequest,
-	#superclass : #GtTwSingleUserLookupAPIRequest,
+	#name : 'GtTwFindUserByIdAPIRequest',
+	#superclass : 'GtTwSingleUserLookupAPIRequest',
 	#instVars : [
 		'userId'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwFindUserByIdAPIRequest >> pathSegments [
 	^ super pathSegments, { self userId }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwFindUserByIdAPIRequest >> responseType [
 	^ GtTwGet2UsersIdResponse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwFindUserByIdAPIRequest >> userId [
 
 	^ userId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwFindUserByIdAPIRequest >> userId: aUserId [
 
 	userId := aUserId

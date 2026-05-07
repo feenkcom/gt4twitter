@@ -87,6 +87,11 @@ GtTwiUser >> name [
 	^ displayName
 ]
 
+{ #category : 'accessing' }
+GtTwiUser >> photos [
+	^ self tweets photos
+]
+
 { #category : 'printing' }
 GtTwiUser >> printOn: aStream [
 	super printOn: aStream.
@@ -111,7 +116,7 @@ GtTwiUser >> profilePictureElement [
 
 { #category : 'accessing' }
 GtTwiUser >> tweets [
-	^ tweets
+	^ tweets sorted: [:a :b | a creationDate > b creationDate ]
 ]
 
 { #category : 'accessing' }

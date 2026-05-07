@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwUserSummaryElement,
-	#superclass : #BrFrame,
+	#name : 'GtTwUserSummaryElement',
+	#superclass : 'BrFrame',
 	#instVars : [
 		'userNameLabel',
 		'userHandleLabel',
@@ -11,28 +11,30 @@ Class {
 		'tweetsCountLabel',
 		'pictureElement'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-UI'
+	#category : 'GToolkit4Twitter-Api-Connector-UI',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'UI'
 }
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 GtTwUserSummaryElement >> actOnElementDetached [
 	pictureElement actOnElementDetached
 ]
 
-{ #category : #'building  - widgets' }
+{ #category : 'building  - widgets' }
 GtTwUserSummaryElement >> buildGrayLabel [
 	^ BrLabel new
 		aptitude: (BrGlamorousLabelAptitude new
 			foreground:  Color lightGray)
 ]
 
-{ #category : #'building  - widgets' }
+{ #category : 'building  - widgets' }
 GtTwUserSummaryElement >> buildProfilePictureElement [
 	^ pictureElement := GtTwUserPictureElement new
 		margin: (BlInsets right: 10)
 ]
 
-{ #category : #'building  - widgets' }
+{ #category : 'building  - widgets' }
 GtTwUserSummaryElement >> buildUserDescriptionElement [
 	^ descriptionEditor := BrEditor new
 		beReadOnlyWithoutSelection;
@@ -42,7 +44,7 @@ GtTwUserSummaryElement >> buildUserDescriptionElement [
 		margin: (BlInsets bottom: 5)
 ]
 
-{ #category : #'building  - widgets' }
+{ #category : 'building  - widgets' }
 GtTwUserSummaryElement >> buildUserDetailsElement [
 	| detailsElement |
 	
@@ -61,7 +63,7 @@ GtTwUserSummaryElement >> buildUserDetailsElement [
 	^ detailsElement
 ]
 
-{ #category : #'building  - widgets' }
+{ #category : 'building  - widgets' }
 GtTwUserSummaryElement >> buildUserHeaderElement [
 	| headerElement|
 	
@@ -77,7 +79,7 @@ GtTwUserSummaryElement >> buildUserHeaderElement [
 	^ headerElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwUserSummaryElement >> initialize [
 	| mainContainer contentContainer |
 	super initialize.
@@ -106,7 +108,7 @@ GtTwUserSummaryElement >> initialize [
 	self addChild: mainContainer
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 GtTwUserSummaryElement >> updateContent [
 
 	pictureElement user: self user.
@@ -121,7 +123,7 @@ GtTwUserSummaryElement >> updateContent [
 	followersCountLabel text: self user followersCount asString, ' Followers'.
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 GtTwUserSummaryElement >> updateUserDescription [
 	(self user description 
 		ifEmpty: [
@@ -131,13 +133,13 @@ GtTwUserSummaryElement >> updateUserDescription [
 	descriptionEditor text: self user description.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserSummaryElement >> user [
 
 	^ user
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserSummaryElement >> user: aUser [
 
 	user := aUser.

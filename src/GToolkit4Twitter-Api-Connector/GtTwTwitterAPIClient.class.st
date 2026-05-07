@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwTwitterAPIClient,
-	#superclass : #GtAcBasicAPIClient,
-	#category : #'GToolkit4Twitter-Api-Connector-Client'
+	#name : 'GtTwTwitterAPIClient',
+	#superclass : 'GtAcBasicAPIClient',
+	#category : 'GToolkit4Twitter-Api-Connector-Client',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Client'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTwitterAPIClient >> authorizedZnClient [
 	| znClient |
 	self assert: [ self authentication notNil ].
@@ -16,71 +18,71 @@ GtTwTwitterAPIClient >> authorizedZnClient [
 	^ znClient
 ]
 
-{ #category : #'requests creation' }
+{ #category : 'requests creation' }
 GtTwTwitterAPIClient >> createGetUserByIdRequest: aUserId [ 
 	^ (GtTwFindUserByIdAPIRequest forApiClient:  self)
 		userId: aUserId
 ]
 
-{ #category : #'requests creation' }
+{ #category : 'requests creation' }
 GtTwTwitterAPIClient >> createGetUserByUsernameRequest: aUsername [ 
 	^ (GtTwFindUserByUsernameAPIRequest forApiClient:  self)
 		username: aUsername
 ]
 
-{ #category : #'requests creation' }
+{ #category : 'requests creation' }
 GtTwTwitterAPIClient >> createGetUserTweetsTimelineRequest: aUserId [ 
 	^ (GtTwUserTweetsTimelineAPIRequest forApiClient:  self)
 		userId: aUserId
 ]
 
-{ #category : #'requests creation' }
+{ #category : 'requests creation' }
 GtTwTwitterAPIClient >> createTweetsRecentSearchRequestForQuery: aQueryString [ 
 	^ (GtTwTweetsRecentSearchAPIRequest forApiClient: self)
 		query: aQueryString
 ]
 
-{ #category : #'requests creation' }
+{ #category : 'requests creation' }
 GtTwTwitterAPIClient >> createUsersIdFollowersRequest: aUserId [ 
 	^ (GtTwUsersIdFollowersRequest forApiClient:  self)
 		userId: aUserId
 ]
 
-{ #category : #'requests creation' }
+{ #category : 'requests creation' }
 GtTwTwitterAPIClient >> createUsersIdFollowingRequest: aUserId [ 
 	^ (GtTwUsersIdFollowingRequest forApiClient:  self)
 		userId: aUserId
 ]
 
-{ #category : #requests }
+{ #category : 'requests' }
 GtTwTwitterAPIClient >> getUserByIdFor: aUserId [
 	^ (self createGetUserByIdRequest: aUserId)
 		withDefaultConfiguration;
 		execute
 ]
 
-{ #category : #requests }
+{ #category : 'requests' }
 GtTwTwitterAPIClient >> getUserByUsernameFor: aUsername [
 	^ (self createGetUserByUsernameRequest: aUsername)
 		withDefaultConfiguration;
 		execute
 ]
 
-{ #category : #requests }
+{ #category : 'requests' }
 GtTwTwitterAPIClient >> getUserTweetsTimelineFor: aUserId [
 	^ (self createGetUserTweetsTimelineRequest: aUserId)
 		withDefaultConfiguration;
 		execute
 ]
 
-{ #category : #requests }
+{ #category : 'requests' }
 GtTwTwitterAPIClient >> usersIdFollowersRequest: aUserId [
 	^ (self createUsersIdFollowersRequest: aUserId)
 		withDefaultConfiguration;
 		execute
 ]
 
-{ #category : #requests }
+{ #category : 'requests' }
 GtTwTwitterAPIClient >> usersIdFollowingRequest: aUserId [
 	^ (self createUsersIdFollowingRequest: aUserId)
 		withDefaultConfiguration;

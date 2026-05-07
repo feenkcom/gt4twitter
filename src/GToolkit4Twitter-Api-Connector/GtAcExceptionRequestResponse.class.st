@@ -2,25 +2,27 @@
 I wrap an exception that happened when executing a request.
 "
 Class {
-	#name : #GtAcExceptionRequestResponse,
-	#superclass : #GtAcRequestResponse,
+	#name : 'GtAcExceptionRequestResponse',
+	#superclass : 'GtAcRequestResponse',
 	#instVars : [
 		'exception'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Response'
+	#category : 'GToolkit4Twitter-Api-Connector-Response',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Response'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcExceptionRequestResponse >> exception [
 	^ exception
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcExceptionRequestResponse >> exception: anException [
 	exception := anException
 ]
 
-{ #category : #'gt extensions' }
+{ #category : 'gt extensions' }
 GtAcExceptionRequestResponse >> gtExceptionMessageFor: aView [
 
 	<gtView>
@@ -36,7 +38,7 @@ GtAcExceptionRequestResponse >> gtExceptionMessageFor: aView [
 		  action: [ :aButton | aButton phlow spawnObject: self exception ]
 ]
 
-{ #category : #'gt extensions' }
+{ #category : 'gt extensions' }
 GtAcExceptionRequestResponse >> gtResponseFor: aView [
 
 	<gtView>
@@ -50,7 +52,7 @@ GtAcExceptionRequestResponse >> gtResponseFor: aView [
 		  view: #gtResponseFor:
 ]
 
-{ #category : #'gt extensions' }
+{ #category : 'gt extensions' }
 GtAcExceptionRequestResponse >> gtResponseHeadersFor: aView [
 
 	<gtView>
@@ -64,7 +66,7 @@ GtAcExceptionRequestResponse >> gtResponseHeadersFor: aView [
 		  view: #gtResponseHeadersFor:
 ]
 
-{ #category : #'gt extensions' }
+{ #category : 'gt extensions' }
 GtAcExceptionRequestResponse >> gtResponseTextContentsFor: aView [
 
 	<gtView>
@@ -78,34 +80,34 @@ GtAcExceptionRequestResponse >> gtResponseTextContentsFor: aView [
 		  view: #gtResponseTextContentsFor:
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcExceptionRequestResponse >> isAuthenticationRequired [
 	^ self isZincHttpError and: [ 
 			self exception response isAuthenticationRequired ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcExceptionRequestResponse >> isError [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcExceptionRequestResponse >> isFailedAssertion [
 	^ self exception class = AssertionFailure
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcExceptionRequestResponse >> isServerError [
 	^ self isZincHttpError and: [ 
 			self exception response isError ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcExceptionRequestResponse >> isZincHttpError [
 	^ self exception class = ZnHttpUnsuccessful
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtAcExceptionRequestResponse >> printOn: aStream [
 
 	super printOn: aStream.
@@ -118,7 +120,7 @@ GtAcExceptionRequestResponse >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcExceptionRequestResponse >> statusLineMessage [
 	^ self exception printString
 ]

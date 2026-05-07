@@ -57,11 +57,14 @@ GtTwiTweet >> gtCardFor: aView [
 	^ aView explicit
 		title: 'Card';
 		priority: 0;
-		stencil: [ GtTwTweetSummaryElement new
-				tweet: self;
-				addAptitude: BrShadowAptitude;
-				background: Color white;
-				margin: (BlInsets all: 10) ]
+		stencil: [ BrVerticalPane new
+				matchParent;
+				alignCenter;
+				addChild: (GtTwTweetSummaryElement new
+						tweet: self;
+						addAptitude: BrShadowAptitude;
+						background: Color white;
+						margin: (BlInsets all: 10)) ]
 ]
 
 { #category : 'accessing' }
@@ -162,7 +165,7 @@ GtTwiTweet >> mediaItems [
 	| extendedEntitieData mediaData |
 	extendedEntitieData := rawData at: 'extended_entities' ifAbsentPut: [ ^ {} ].
 	mediaData := extendedEntitieData at: 'media' ifAbsentPut: [ ^ {} ].
-	^ mediaData collect: [ :each | GtTwiMediaItem new rawData: each ]
+	^ mediaData collect: [ :each | GtTwiMediaItem new rawData: each; tweet: self ]
 ]
 
 { #category : 'accessing' }

@@ -1,30 +1,32 @@
 Class {
-	#name : #GtAcAPIClientRequestError,
-	#superclass : #Error,
+	#name : 'GtAcAPIClientRequestError',
+	#superclass : 'Error',
 	#instVars : [
 		'response'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtAcAPIClientRequestError class >> for: aResponse [
 	^ self new 
 		response: aResponse;
 		yourself	
 ]
 
-{ #category : #signalling }
+{ #category : 'signalling' }
 GtAcAPIClientRequestError class >> signalFor: aResponse [
 	^ (self for: aResponse) signal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcAPIClientRequestError >> response [
 	^ response
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcAPIClientRequestError >> response: anObject [
 	response := anObject
 ]

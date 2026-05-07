@@ -2,31 +2,33 @@
 I wrap a zinc result obtained as a result of a zinc request.
 "
 Class {
-	#name : #GtAcZincRequestResponse,
-	#superclass : #GtAcRequestResponse,
+	#name : 'GtAcZincRequestResponse',
+	#superclass : 'GtAcRequestResponse',
 	#instVars : [
 		'zincResponse',
 		'contents'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Response'
+	#category : 'GToolkit4Twitter-Api-Connector-Response',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Response'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcZincRequestResponse >> code [
 	^ self zincResponse code
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcZincRequestResponse >> contents [
 	^ contents
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcZincRequestResponse >> contents: anObject [
 	contents := anObject
 ]
 
-{ #category : #'gt extensions' }
+{ #category : 'gt extensions' }
 GtAcZincRequestResponse >> gtContentsFor: aView [
 	<gtView>
 	
@@ -39,7 +41,7 @@ GtAcZincRequestResponse >> gtContentsFor: aView [
 		  view: #gtLiveFor:
 ]
 
-{ #category : #'gt extensions' }
+{ #category : 'gt extensions' }
 GtAcZincRequestResponse >> gtViewJsonResponseFor: aView [ 
 	<gtView>
 	
@@ -48,29 +50,29 @@ GtAcZincRequestResponse >> gtViewJsonResponseFor: aView [
 	^ zincResponse gtJsonFor: aView
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcZincRequestResponse >> isAuthenticationRequired [
 	^ self zincResponse isAuthenticationRequired
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcZincRequestResponse >> isSuccess [
 	<return: #Boolean>
 	^ self zincResponse isSuccess
 ]
 
-{ #category : #'accessing - response' }
+{ #category : 'accessing - response' }
 GtAcZincRequestResponse >> statusLineMessage [
 	^ (String streamContents: [ :aStream | 
 			self zincResponse statusLine writeOn: aStream ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcZincRequestResponse >> zincResponse [
 	^ zincResponse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcZincRequestResponse >> zincResponse: aZnResponse [
 	self assert: [ zincResponse isNil and: [ aZnResponse notNil ] ].
 	zincResponse := aZnResponse

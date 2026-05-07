@@ -2,17 +2,19 @@
 nil
 "
 Class {
-	#name : #GtTwUserMentionsTimelineAPIRequest,
-	#superclass : #GtTwTweetsUserTimelinesAPIRequest,
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#name : 'GtTwUserMentionsTimelineAPIRequest',
+	#superclass : 'GtTwTweetsUserTimelinesAPIRequest',
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserMentionsTimelineAPIRequest >> pathSegments [
 	^ super pathSegments, { 'mentions' }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserMentionsTimelineAPIRequest >> responseType [
 	^ GtTwGet2UsersIdMentionsResponse
 ]

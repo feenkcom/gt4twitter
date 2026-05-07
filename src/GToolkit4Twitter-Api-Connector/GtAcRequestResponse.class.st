@@ -4,22 +4,24 @@ I model a generic result of making a zinc request.
 My main purpose is to wrap an error or a normal Zinc response.
 "
 Class {
-	#name : #GtAcRequestResponse,
-	#superclass : #Object,
-	#category : #'GToolkit4Twitter-Api-Connector-Response'
+	#name : 'GtAcRequestResponse',
+	#superclass : 'Object',
+	#category : 'GToolkit4Twitter-Api-Connector-Response',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Response'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcRequestResponse >> isError [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtAcRequestResponse >> isSuccess [
 	^ false
 ]
 
-{ #category : #'accessing - response' }
+{ #category : 'accessing - response' }
 GtAcRequestResponse >> statusLineMessage [
 	
 	^ self subclassResponsibility

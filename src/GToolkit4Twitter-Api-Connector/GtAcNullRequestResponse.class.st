@@ -2,25 +2,27 @@
 I model a null object.
 "
 Class {
-	#name : #GtAcNullRequestResponse,
-	#superclass : #GtAcRequestResponse,
+	#name : 'GtAcNullRequestResponse',
+	#superclass : 'GtAcRequestResponse',
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Response'
+	#category : 'GToolkit4Twitter-Api-Connector-Response',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Response'
 }
 
-{ #category : #cleanup }
+{ #category : 'cleanup' }
 GtAcNullRequestResponse class >> cleanUp [
 	self cleanUniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcNullRequestResponse class >> uniqueInstance [
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ]
 ]
 
-{ #category : #'accessing - response' }
+{ #category : 'accessing - response' }
 GtAcNullRequestResponse >> statusLineMessage [
 	<return: #String>
 	^ ''

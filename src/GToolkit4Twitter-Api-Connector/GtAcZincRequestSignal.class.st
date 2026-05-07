@@ -1,13 +1,15 @@
 Class {
-	#name : #GtAcZincRequestSignal,
-	#superclass : #GtAcZincSignal,
+	#name : 'GtAcZincRequestSignal',
+	#superclass : 'GtAcZincSignal',
 	#instVars : [
 		'request'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Logging'
+	#category : 'GToolkit4Twitter-Api-Connector-Logging',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Logging'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtAcZincRequestSignal >> printOneLineContentsOn: stream [
 	self request headers at:'X-Request-Id' ifPresent: [:xRequestId |
 		 stream nextPutAll: xRequestId].
@@ -17,12 +19,12 @@ GtAcZincRequestSignal >> printOneLineContentsOn: stream [
 	stream nextPutAll: (self request url asString).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcZincRequestSignal >> request [
 	^ request
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcZincRequestSignal >> request: anObject [
 	request := anObject
 ]

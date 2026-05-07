@@ -17,7 +17,7 @@ GtTwiAdImpressionsGroup >> gtItemsFor: aView [
 	^ aView columnedList 
 		title: 'Items';
 		items: [ self ];
-		column: 'Date' text: [ 'todo' ];
+		column: 'Date' text: [ :anAdImpression | anAdImpression impressionTime asLocalStringYMDHM ];
 		column: 'Advertiser' text: [ :anAdImpression |
 			anAdImpression authorName ];
 		column: 'Criterias' text: [ :anAdImpression |

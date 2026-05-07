@@ -1,6 +1,9 @@
 Class {
 	#name : 'GtTwiMediaItem',
 	#superclass : 'GtTwiEntity',
+	#instVars : [
+		'tweet'
+	],
 	#category : 'GToolkit4Twitter-Archive-Importer',
 	#package : 'GToolkit4Twitter-Archive-Importer'
 }
@@ -18,7 +21,18 @@ GtTwiMediaItem >> gtPreviewFor: aView [
 	self isPhoto ifFalse: [ ^ aView empty ].
 	^ aView explicit
 		title: 'Picture';
+		priority: 1;
 		stencil: [ self asElement ]
+]
+
+{ #category : 'views' }
+GtTwiMediaItem >> gtTweetFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Tweet';
+		priority: 0;
+		object: [ self tweet ];
+		view: #gtCardFor:
 ]
 
 { #category : 'accessing' }
@@ -29,6 +43,16 @@ GtTwiMediaItem >> isPhoto [
 { #category : 'accessing' }
 GtTwiMediaItem >> mediaType [
 	^ rawData at: 'type'
+]
+
+{ #category : 'as yet unclassified' }
+GtTwiMediaItem >> tweet [
+	^ tweet
+]
+
+{ #category : 'accessing' }
+GtTwiMediaItem >> tweet: aTweet [
+	tweet := aTweet 
 ]
 
 { #category : 'accessing' }

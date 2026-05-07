@@ -1,35 +1,37 @@
 Class {
-	#name : #GtTwEntity,
-	#superclass : #Object,
+	#name : 'GtTwEntity',
+	#superclass : 'Object',
 	#instVars : [
 		'apiContext'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Model'
+	#category : 'GToolkit4Twitter-Api-Connector-Model',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwEntity class >> forApiContext: aContext [
 	^ self new 
 		apiContext: aContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwEntity >> apiContext [
 
 	^ apiContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwEntity >> apiContext: anObject [
 
 	apiContext := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtTwEntity >> descriptionOn: aStream [ 
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtTwEntity >> printOn: aStream [
 	super printOn: aStream.
 	

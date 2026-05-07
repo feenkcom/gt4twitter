@@ -1,18 +1,20 @@
 Class {
-	#name : #GtTwUserSummaryListContainerElement,
-	#superclass : #BrVerticalPane,
+	#name : 'GtTwUserSummaryListContainerElement',
+	#superclass : 'BrVerticalPane',
 	#instVars : [
 		'userSummaryElement'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-UI'
+	#category : 'GToolkit4Twitter-Api-Connector-UI',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'UI'
 }
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 GtTwUserSummaryListContainerElement >> actOnElementDetached [
 	userSummaryElement actOnElementDetached
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwUserSummaryListContainerElement >> initialize [
 	super initialize.
 	
@@ -28,7 +30,7 @@ GtTwUserSummaryListContainerElement >> initialize [
 		background: Color veryLightGray  muchLighter )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserSummaryListContainerElement >> user: aUser [
 	userSummaryElement user: aUser
 ]

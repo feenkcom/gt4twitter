@@ -58,6 +58,11 @@ GtTwiAdImpression >> gtViewMatchedCriteriasFor: aView [
 		view: #gtItemsFor: 
 ]
 
+{ #category : 'accessing' }
+GtTwiAdImpression >> impressionTime [
+	^ DateAndTime fromString: (rawData at: 'impressionTime')
+]
+
 { #category : 'initialization' }
 GtTwiAdImpression >> initialize [
 	super initialize.

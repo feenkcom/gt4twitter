@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwPaginatedLoaderStream,
-	#superclass : #GtTwDataStream,
+	#name : 'GtTwPaginatedLoaderStream',
+	#superclass : 'GtTwDataStream',
 	#instVars : [
 		'stream',
 		'done',
@@ -9,16 +9,18 @@ Class {
 		'dataInitializer',
 		'requests'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Streams'
+	#category : 'GToolkit4Twitter-Api-Connector-Streams',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Streams'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwPaginatedLoaderStream class >> forRequestBuilder: aRequestBuilder [ 
 	^ self new 
 		initializeWithRequestBuilder: aRequestBuilder
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> createNewRequest [
 	| newRequest | 
 	newRequest := requestBuilder value.
@@ -31,12 +33,12 @@ GtTwPaginatedLoaderStream >> createNewRequest [
 	^ newRequest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> dataInitializer: aBlock [
 	dataInitializer := aBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> executeNewRequest [
 	| newRequest | 
 	newRequest := self createNewRequest.	
@@ -45,13 +47,13 @@ GtTwPaginatedLoaderStream >> executeNewRequest [
 	^ newRequest execute
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> extractValuesFromResult: aRequestResult [ 
 	^ self groupType withAll: (self 
 		extractValuesFromReturnedValue: aRequestResult returnedValue)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> extractValuesFromReturnedValue: aReturnedValue [
 	^ aReturnedValue data collect: [ :aRawTweetData |
 			dataInitializer 
@@ -59,12 +61,12 @@ GtTwPaginatedLoaderStream >> extractValuesFromReturnedValue: aReturnedValue [
 				cull: aReturnedValue ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> groupType [
 	^ OrderedCollection 
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwPaginatedLoaderStream >> gtViewRequestsHistoryFor: aView [
 	<gtView>
 	
@@ -77,7 +79,7 @@ GtTwPaginatedLoaderStream >> gtViewRequestsHistoryFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwPaginatedLoaderStream >> gtViewResponsesFor: aView [
 	"<gtView>"
 	
@@ -88,7 +90,7 @@ GtTwPaginatedLoaderStream >> gtViewResponsesFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwPaginatedLoaderStream >> gtViewReturnedValuesFor: aView [
 	<gtView>
 	
@@ -100,26 +102,26 @@ GtTwPaginatedLoaderStream >> gtViewReturnedValuesFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> hasNextPage [
 	lastResult ifNil: [ ^ false ].
 	
 	^ lastResult returnedValue hasNextPaginationToken
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtTwPaginatedLoaderStream >> hasSuccessfulResult [
 	^ lastResult notNil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwPaginatedLoaderStream >> initialize [
 	super initialize.
 	
 	dataInitializer := [ :anEntity | anEntity ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwPaginatedLoaderStream >> initializeWithRequestBuilder: aRequestBuilder [
 	requestBuilder := aRequestBuilder.
 	
@@ -130,13 +132,13 @@ GtTwPaginatedLoaderStream >> initializeWithRequestBuilder: aRequestBuilder [
 	requests := OrderedCollection new.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> loadInitialValues [
 
 	^ self retrieveValues
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> loadNextValues [
 	self hasSuccessfulResult ifFalse: [ 
 		done := true.
@@ -149,12 +151,12 @@ GtTwPaginatedLoaderStream >> loadNextValues [
 	^ self retrieveValues
 ]
 
-{ #category : #logging }
+{ #category : 'logging' }
 GtTwPaginatedLoaderStream >> logRequest: aRequest [
 	requests add: aRequest
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> pollNext: anAsynchronousContext [
 	"Attempt to pull out the next value of this stream, registering the current task for wakeup if the value is not yet available, and returning None if the stream is exhausted.
 	There are several possible return values, each indicating a distinct stream state:
@@ -183,7 +185,7 @@ GtTwPaginatedLoaderStream >> pollNext: anAsynchronousContext [
 		ifPending: [ :aPendingPoll | aPendingPoll ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> postSimilarCopy [
 	"Is called by similarCopy. self is a shallow copy, implementors should set the fields as necessary to complete the similar copy"
 
@@ -191,7 +193,7 @@ GtTwPaginatedLoaderStream >> postSimilarCopy [
 		self initializeWithRequestBuilder: requestBuilder ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwPaginatedLoaderStream >> retrieveValues [
 	
 	lastResult := self executeNewRequest.

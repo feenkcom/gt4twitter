@@ -1,27 +1,29 @@
 Class {
-	#name : #GtTwUserLookupAPIRequest,
-	#superclass : #GtTwTwitterAPIRequest,
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#name : 'GtTwUserLookupAPIRequest',
+	#superclass : 'GtTwTwitterAPIRequest',
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserLookupAPIRequest >> httpMethod [
 	^ #GET
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserLookupAPIRequest >> pathSegments [
 	^ { '2' . 'users' }
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 GtTwUserLookupAPIRequest >> withDefaultConfiguration [
 	self 
 		withPinnedTweetId;
 		withAllUserFields
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 GtTwUserLookupAPIRequest >> withPinnedTweetId [
 	self ensureExpansionField: 'pinned_tweet_id'
 ]

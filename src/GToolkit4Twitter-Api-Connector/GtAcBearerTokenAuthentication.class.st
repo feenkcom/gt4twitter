@@ -1,41 +1,43 @@
 Class {
-	#name : #GtAcBearerTokenAuthentication,
-	#superclass : #GtAcBasicApiAuthentication,
+	#name : 'GtAcBearerTokenAuthentication',
+	#superclass : 'GtAcBasicApiAuthentication',
 	#instVars : [
 		'bearerToken'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Client'
+	#category : 'GToolkit4Twitter-Api-Connector-Client',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Client'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtAcBearerTokenAuthentication class >> forBearerToken: aBearerToken [
 	^ self new 
 		bearerToken:  aBearerToken 
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtAcBearerTokenAuthentication class >> fromClipboard [
 	^ self forBearerToken: GtAcInMemoryToken fromClipboard
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtAcBearerTokenAuthentication class >> fromEnvVar: aVariableName [
 	^ self forBearerToken: (GtAcEnvVariableToken fromEnvVar: aVariableName)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtAcBearerTokenAuthentication >> applyAuthenticationOn: aZincClient [
 	self assert: [ self bearerToken notNil ].
 	
 	self bearerToken applyBearerAuthenticationOn: aZincClient.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBearerTokenAuthentication >> bearerToken [
 	^ bearerToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBearerTokenAuthentication >> bearerToken: aBearerToken [
 	bearerToken := aBearerToken
 ]

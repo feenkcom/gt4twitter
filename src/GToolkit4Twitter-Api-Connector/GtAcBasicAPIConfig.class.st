@@ -1,13 +1,15 @@
 Class {
-	#name : #GtAcBasicAPIConfig,
-	#superclass : #Object,
+	#name : 'GtAcBasicAPIConfig',
+	#superclass : 'Object',
 	#instVars : [
 		'serverUrl'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Client'
+	#category : 'GToolkit4Twitter-Api-Connector-Client',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Client'
 }
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtAcBasicAPIConfig >> printOn: aStream [
 	super printOn: aStream.
 	aStream 
@@ -16,13 +18,13 @@ GtAcBasicAPIConfig >> printOn: aStream [
 		nextPutAll: ')'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIConfig >> serverUrl [
 
 	^ serverUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcBasicAPIConfig >> serverUrl: aZnUrl [
 	serverUrl := aZnUrl
 ]

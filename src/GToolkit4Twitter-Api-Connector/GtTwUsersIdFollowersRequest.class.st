@@ -1,29 +1,31 @@
 Class {
-	#name : #GtTwUsersIdFollowersRequest,
-	#superclass : #GtTwUsersGroupLookupAPIRequest,
+	#name : 'GtTwUsersIdFollowersRequest',
+	#superclass : 'GtTwUsersGroupLookupAPIRequest',
 	#instVars : [
 		'userId'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUsersIdFollowersRequest >> pathSegments [
 	^ super pathSegments, { self userId . 'followers' }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUsersIdFollowersRequest >> responseType [
 	^ GtTwRawGet2UsersIdFollowersResponse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUsersIdFollowersRequest >> userId [
 
 	^ userId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUsersIdFollowersRequest >> userId: aUserId [
 
 	userId := aUserId

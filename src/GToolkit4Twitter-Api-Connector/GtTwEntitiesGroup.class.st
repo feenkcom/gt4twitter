@@ -1,7 +1,9 @@
 Class {
-	#name : #GtTwEntitiesGroup,
-	#superclass : #Object,
+	#name : 'GtTwEntitiesGroup',
+	#superclass : 'Object',
 	#traits : 'TGtGroup + TGtGroupItems',
 	#classTraits : 'TGtGroup classTrait + TGtGroupItems classTrait',
-	#category : #'GToolkit4Twitter-Api-Connector-Model'
+	#category : 'GToolkit4Twitter-Api-Connector-Model',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model'
 }

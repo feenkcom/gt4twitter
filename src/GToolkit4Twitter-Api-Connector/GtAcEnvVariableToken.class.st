@@ -1,38 +1,40 @@
 Class {
-	#name : #GtAcEnvVariableToken,
-	#superclass : #GtAcApiToken,
+	#name : 'GtAcEnvVariableToken',
+	#superclass : 'GtAcApiToken',
 	#instVars : [
 		'variableName'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Client'
+	#category : 'GToolkit4Twitter-Api-Connector-Client',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Client'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtAcEnvVariableToken class >> fromEnvVar: aVariableName [
 	^ self new 
 		variableName: aVariableName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcEnvVariableToken >> applyBearerAuthenticationOn: aZincClient [
 	self assert: [ self variableName notNil ].
 	
 	aZincClient setBearerAuthentication: self currentValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcEnvVariableToken >> currentValue [
 	^ OSPlatform current environment 
 		at: self variableName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcEnvVariableToken >> variableName [
 
 	^ variableName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcEnvVariableToken >> variableName: aVariableName [
 
 	variableName := aVariableName

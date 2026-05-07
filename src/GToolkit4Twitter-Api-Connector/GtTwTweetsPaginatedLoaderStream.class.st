@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwTweetsPaginatedLoaderStream,
-	#superclass : #GtTwPaginatedLoaderStream,
-	#category : #'GToolkit4Twitter-Api-Connector-Streams'
+	#name : 'GtTwTweetsPaginatedLoaderStream',
+	#superclass : 'GtTwPaginatedLoaderStream',
+	#category : 'GToolkit4Twitter-Api-Connector-Streams',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Streams'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetsPaginatedLoaderStream >> cached [
 	"Returns a stream that caches items across all #asyncSimilarCopy streams.
 	Correctly handles the case when each similar stream is polled from a difference worker process,
@@ -14,12 +16,12 @@ GtTwTweetsPaginatedLoaderStream >> cached [
 	^ GtTwTweetsCachedStream forStream: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetsPaginatedLoaderStream >> groupType [
 	^ GtTwTweetsGroup 
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwTweetsPaginatedLoaderStream >> gtViewTweetsListFor: aView [
 	<gtView>
 
@@ -33,7 +35,7 @@ GtTwTweetsPaginatedLoaderStream >> gtViewTweetsListFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwTweetsPaginatedLoaderStream >> initialize [
 	super initialize.
 	

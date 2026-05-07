@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwTweetsCachedStream,
-	#superclass : #GtTwAsyncCachedPaginatedLoaderStream,
-	#category : #'GToolkit4Twitter-Api-Connector-Streams'
+	#name : 'GtTwTweetsCachedStream',
+	#superclass : 'GtTwAsyncCachedPaginatedLoaderStream',
+	#category : 'GToolkit4Twitter-Api-Connector-Streams',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Streams'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwTweetsCachedStream >> gtViewTweetsListFor: aView [
 	<gtView>
 
@@ -18,7 +20,7 @@ GtTwTweetsCachedStream >> gtViewTweetsListFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwTweetsCachedStream >> gtViewTweetsSummaryUIFor: aView [
 	<gtView>
 

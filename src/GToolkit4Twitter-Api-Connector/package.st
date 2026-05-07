@@ -1,1 +1,1 @@
-Package { #name : #'GToolkit4Twitter-Api-Connector' }
+Package { #name : 'GToolkit4Twitter-Api-Connector' }

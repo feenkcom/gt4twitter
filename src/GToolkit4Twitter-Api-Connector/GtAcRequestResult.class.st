@@ -1,56 +1,58 @@
 Class {
-	#name : #GtAcRequestResult,
-	#superclass : #Object,
+	#name : 'GtAcRequestResult',
+	#superclass : 'Object',
 	#instVars : [
 		'request',
 		'requestResponse',
 		'returnedValue'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Result'
+	#category : 'GToolkit4Twitter-Api-Connector-Result',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Result'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtAcRequestResult class >> forRequest: aRequest [
 	^ self new 
 		request: aRequest 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcRequestResult >> contents [
 	^ self resultValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcRequestResult >> request [
 
 	^ request
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcRequestResult >> request: anObject [
 
 	request := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcRequestResult >> requestResponse [
 
 	^ requestResponse
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcRequestResult >> requestResponse: anObject [
 
 	requestResponse := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcRequestResult >> returnedValue [
 
 	^ returnedValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcRequestResult >> returnedValue: anObject [
 
 	returnedValue := anObject

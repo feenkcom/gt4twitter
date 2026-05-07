@@ -1,19 +1,21 @@
 Class {
-	#name : #GtTwRawObject,
-	#superclass : #Object,
+	#name : 'GtTwRawObject',
+	#superclass : 'Object',
 	#instVars : [
 		'rawData'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
+	#category : 'GToolkit4Twitter-Api-Connector-Model-Basic',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model-Basic'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwRawObject class >> fromRawData: aRawData [
 	^ self new 
 		initializaFromRawData: aRawData
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwRawObject >> gtRawDataFor: aView [
 	<gtView>
 	
@@ -26,7 +28,7 @@ GtTwRawObject >> gtRawDataFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtTwRawObject >> hasNotNilKey: aKey [
 	^ self rawData 
 		at: aKey
@@ -34,29 +36,29 @@ GtTwRawObject >> hasNotNilKey: aKey [
 		ifAbsent: [ false ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwRawObject >> initializaFromRawData: aRawData [
 	self rawData: aRawData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawObject >> rawData [
 
 	^ rawData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawObject >> rawData: anObject [
 
 	rawData := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawObject >> rawDataAt: aKey [ 
 	^ self rawData at: aKey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawObject >> rawDataWithDefaultAt: aString [ 
 	^ self rawData 
 		at: aString ifAbsent: [ nil ]

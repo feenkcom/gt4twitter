@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwUsersPaginatedLoaderStream,
-	#superclass : #GtTwPaginatedLoaderStream,
-	#category : #'GToolkit4Twitter-Api-Connector-Streams'
+	#name : 'GtTwUsersPaginatedLoaderStream',
+	#superclass : 'GtTwPaginatedLoaderStream',
+	#category : 'GToolkit4Twitter-Api-Connector-Streams',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Streams'
 }
 
-{ #category : #'api - stream' }
+{ #category : 'api - stream' }
 GtTwUsersPaginatedLoaderStream >> cached [
 	"Returns a stream that caches items across all #asyncSimilarCopy streams.
 	Correctly handles the case when each similar stream is polled from a difference worker process,
@@ -14,7 +16,7 @@ GtTwUsersPaginatedLoaderStream >> cached [
 	^ GtTwUsersCachedStream forStream: self
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwUsersPaginatedLoaderStream >> gtViewUsersListFor: aView [
 	<gtView>
 

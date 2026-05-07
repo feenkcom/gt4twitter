@@ -1,24 +1,26 @@
 Class {
-	#name : #GtTwTweetsUserTimelinesAPIRequest,
-	#superclass : #GtTwTweetsGroupLookupAPIRequest,
+	#name : 'GtTwTweetsUserTimelinesAPIRequest',
+	#superclass : 'GtTwTweetsGroupLookupAPIRequest',
 	#instVars : [
 		'userId'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetsUserTimelinesAPIRequest >> pathSegments [
 	^ { '2' . 'users' . userId asString } 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetsUserTimelinesAPIRequest >> userId [
 
 	^ userId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetsUserTimelinesAPIRequest >> userId: aUserId [
 
 	userId := aUserId

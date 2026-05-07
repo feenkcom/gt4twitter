@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwTweetSummaryElement,
-	#superclass : #BrVerticalPane,
+	#name : 'GtTwTweetSummaryElement',
+	#superclass : 'BrVerticalPane',
 	#instVars : [
 		'tweetTextEditor',
 		'tweet',
@@ -12,23 +12,25 @@ Class {
 		'pictureElement',
 		'mediaContainer'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-UI'
+	#category : 'GToolkit4Twitter-Api-Connector-UI',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'UI'
 }
 
-{ #category : #'building widgets' }
+{ #category : 'building widgets' }
 GtTwTweetSummaryElement >> buildGrayLabel [
 	^ BrLabel new
 		aptitude: (BrGlamorousLabelAptitude new
 			foreground:  Color lightGray)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetSummaryElement >> buildProfilePictureElement [
 	^ pictureElement := GtTwUserPictureElement new
 		margin: (BlInsets right: 10)
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwTweetSummaryElement >> buildTweetContentElement [
 	^ (tweetTextEditor := BrEditor new
 		beReadOnlyWithoutSelection;
@@ -38,7 +40,7 @@ GtTwTweetSummaryElement >> buildTweetContentElement [
 		margin: (BlInsets bottom: 10) )
 ]
 
-{ #category : #'building widgets' }
+{ #category : 'building widgets' }
 GtTwTweetSummaryElement >> buildTweetDetailsElement [
 	| detailsElement|
 	
@@ -56,12 +58,12 @@ GtTwTweetSummaryElement >> buildTweetDetailsElement [
 	^ detailsElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwTweetSummaryElement >> buildTweetMediaElement [
 	^ (mediaContainer := BrHorizontalPane new hMatchParent; vExact: 200)
 ]
 
-{ #category : #'building widgets' }
+{ #category : 'building widgets' }
 GtTwTweetSummaryElement >> buildUserHeaderElement [
 	| headerElement|
 	
@@ -77,7 +79,7 @@ GtTwTweetSummaryElement >> buildUserHeaderElement [
 	^ headerElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwTweetSummaryElement >> initialize [
 	| mainContainer contentContainer |
 	
@@ -107,19 +109,19 @@ GtTwTweetSummaryElement >> initialize [
 	self addChild:  mainContainer.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetSummaryElement >> tweet [
 	^ tweet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetSummaryElement >> tweet: aTweet [
 	tweet := aTweet.
 	
 	self updateContent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetSummaryElement >> updateAuthorDetails [
 	self tweet author ifNil: [
 		authorNameLabel text: '<missing>'.
@@ -130,7 +132,7 @@ GtTwTweetSummaryElement >> updateAuthorDetails [
 	authorHandleLabel text: '@', self tweet author  username.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetSummaryElement >> updateContent [
 	pictureElement user: self tweet author.
 	self updateAuthorDetails.
@@ -140,7 +142,7 @@ GtTwTweetSummaryElement >> updateContent [
 	retweetsCountLabel text: self tweet retweetsCount asString , ' RT'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetSummaryElement >> updateMedia [
 	self tweet hasPhotos
 		ifFalse: [ mediaContainer visibility: BlVisibility gone ]

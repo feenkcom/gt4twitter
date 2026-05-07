@@ -1,26 +1,28 @@
 Class {
-	#name : #GtAcInMemoryToken,
-	#superclass : #GtAcApiToken,
+	#name : 'GtAcInMemoryToken',
+	#superclass : 'GtAcApiToken',
 	#instVars : [
 		'value'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Client'
+	#category : 'GToolkit4Twitter-Api-Connector-Client',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Client'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtAcInMemoryToken class >> fromClipboard [
 	^ self new 
 		value: Clipboard clipboardText asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcInMemoryToken >> applyBearerAuthenticationOn: aZincClient [
 	self assert: [ value notNil ].
 	
 	aZincClient setBearerAuthentication: value
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtAcInMemoryToken >> gtInspectorVariableNodesIn: aCollection [
 	aCollection
 		add: (GtInspectorDynamicNode 
@@ -29,7 +31,7 @@ GtAcInMemoryToken >> gtInspectorVariableNodesIn: aCollection [
 			value: '************')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcInMemoryToken >> printOn: aStream [
 	super printOn: aStream.
 	
@@ -37,7 +39,7 @@ GtAcInMemoryToken >> printOn: aStream [
 		aStream << '**********' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtAcInMemoryToken >> value: aString [
 	self 
 		assert: [ aString notNil and: [ value isNil ] ]

@@ -1,21 +1,23 @@
 Class {
-	#name : #GtTwTweetsRecentSearchAPIRequest,
-	#superclass : #GtTwTweetsGroupLookupAPIRequest,
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#name : 'GtTwTweetsRecentSearchAPIRequest',
+	#superclass : 'GtTwTweetsGroupLookupAPIRequest',
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetsRecentSearchAPIRequest >> pathSegments [
 	^ { '2' . 'tweets' . 'search' . 'recent' } 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetsRecentSearchAPIRequest >> query: aString [
 
 	self queryParameterAt: 'query' put: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetsRecentSearchAPIRequest >> responseType [
 	^ GtTwGet2TweetsSearchRecentResponse
 ]

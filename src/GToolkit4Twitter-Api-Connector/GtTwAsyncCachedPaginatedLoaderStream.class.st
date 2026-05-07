@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwAsyncCachedPaginatedLoaderStream,
-	#superclass : #AsyncCachedStream,
-	#category : #'GToolkit4Twitter-Api-Connector-Streams'
+	#name : 'GtTwAsyncCachedPaginatedLoaderStream',
+	#superclass : 'AsyncCachedStream',
+	#category : 'GToolkit4Twitter-Api-Connector-Streams',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Streams'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwAsyncCachedPaginatedLoaderStream >> gtViewRequestsHistoryFor: aView [
 	<gtView>
 
@@ -15,7 +17,7 @@ GtTwAsyncCachedPaginatedLoaderStream >> gtViewRequestsHistoryFor: aView [
 		view: #gtViewRequestsHistoryFor:
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwAsyncCachedPaginatedLoaderStream >> gtViewReturnedValuesFor: aView [
 	<gtView>
 

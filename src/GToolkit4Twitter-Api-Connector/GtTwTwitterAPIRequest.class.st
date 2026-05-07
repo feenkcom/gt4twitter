@@ -2,17 +2,19 @@
 nil
 "
 Class {
-	#name : #GtTwTwitterAPIRequest,
-	#superclass : #GtAcBasicAPIRequest,
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#name : 'GtTwTwitterAPIRequest',
+	#superclass : 'GtAcBasicAPIRequest',
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #'accessing - config values' }
+{ #category : 'accessing - config values' }
 GtTwTwitterAPIRequest >> allUserFields [
 	^ #(created_at description entities id location name pinned_tweet_id profile_image_url protected public_metrics url username verified withheld)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTwitterAPIRequest >> configureQueryFielsFor: aZincClient [
 
 	queryFields keysAndValuesDo: [:k :v |
@@ -21,7 +23,7 @@ GtTwTwitterAPIRequest >> configureQueryFielsFor: aZincClient [
 			put: (self formattedQueryValueFor:v) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTwitterAPIRequest >> configuredZincClient [
 	| zincClient |
 	
@@ -37,7 +39,7 @@ GtTwTwitterAPIRequest >> configuredZincClient [
 	^ zincClient
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 GtTwTwitterAPIRequest >> ensureExpansionField: aField [ 
 	| expansionFields |
 	expansionFields := queryFields 
@@ -47,7 +49,7 @@ GtTwTwitterAPIRequest >> ensureExpansionField: aField [
 		expansionFields add: aField ].
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwTwitterAPIRequest >> gtViewPathSegmentsFor: aView [ 
 	<gtView>
 	
@@ -57,18 +59,18 @@ GtTwTwitterAPIRequest >> gtViewPathSegmentsFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTwitterAPIRequest >> parserResponseContents: aContent [
 	^ self responseType  
 		fromJsonString: aContent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTwitterAPIRequest >> pathSegments [
 	^ {}
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtTwTwitterAPIRequest >> printOn: aStream [
 	super printOn: aStream.
 	
@@ -78,22 +80,22 @@ GtTwTwitterAPIRequest >> printOn: aStream [
 			delimiter: '/' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTwitterAPIRequest >> responseType [
 	self subclassResponsibility 
 ]
 
-{ #category : #'query parameters' }
+{ #category : 'query parameters' }
 GtTwTwitterAPIRequest >> userFields: aListOfUserFields [
 	queryFields at: 'user.fields' put: aListOfUserFields.
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 GtTwTwitterAPIRequest >> withAllUserFields [
 	self userFields: self allUserFields
 ]
 
-{ #category : #configuration }
+{ #category : 'configuration' }
 GtTwTwitterAPIRequest >> withAuthorIdExpanded [
 	self ensureExpansionField: 'author_id'.
 ]

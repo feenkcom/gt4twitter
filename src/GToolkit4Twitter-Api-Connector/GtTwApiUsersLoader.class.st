@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwApiUsersLoader,
-	#superclass : #GtTwApiDataLoader,
-	#category : #'GToolkit4Twitter-Api-Connector-Loader'
+	#name : 'GtTwApiUsersLoader',
+	#superclass : 'GtTwApiDataLoader',
+	#category : 'GToolkit4Twitter-Api-Connector-Loader',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Loader'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwApiUsersLoader >> getFollowersForUserId: aUserId [
 	| usersStream |
 	
@@ -22,7 +24,7 @@ GtTwApiUsersLoader >> getFollowersForUserId: aUserId [
 	^ usersStream cached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwApiUsersLoader >> getFollowingForUserId: aUserId [
 	| usersStream |
 	
@@ -40,7 +42,7 @@ GtTwApiUsersLoader >> getFollowingForUserId: aUserId [
 	^ usersStream cached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwApiUsersLoader >> loadUsername: aUsername [
 	^ (GtTwUser forApiContext: self apiContext)
 		 initializeFromRawUser: ((self apiContext apiClient 

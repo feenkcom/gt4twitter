@@ -1,25 +1,27 @@
 Class {
-	#name : #GtTwUserPictureElement,
-	#superclass : #BrFrame,
+	#name : 'GtTwUserPictureElement',
+	#superclass : 'BrFrame',
 	#instVars : [
 		'pictureElement'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-UI'
+	#category : 'GToolkit4Twitter-Api-Connector-UI',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'UI'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserPictureElement >> actOnElementDetached [
 	pictureElement asyncFuture cancelSoft interrupt
 ]
 
-{ #category : #'building - widgets' }
+{ #category : 'building - widgets' }
 GtTwUserPictureElement >> buildAsyncPictureElement [
 	^ pictureElement := BrVerticalPane new
 			matchParent;
 			geometry: BlCircleGeometry new
 ]
 
-{ #category : #'building - widgets' }
+{ #category : 'building - widgets' }
 GtTwUserPictureElement >> buildProfilePictureElement [
 	^ pictureElement := BrFrame new 
 		matchParent;
@@ -42,7 +44,7 @@ GtTwUserPictureElement >> buildProfilePictureElement [
 					theContainer addChild: theElement ] ]
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 GtTwUserPictureElement >> emptyDefaultForm [
 	| defaultForm |
 	defaultForm := Form extent: 48@48 depth: 32.
@@ -50,7 +52,7 @@ GtTwUserPictureElement >> emptyDefaultForm [
 	^ defaultForm
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwUserPictureElement >> initialize [
 	super initialize.
 	
@@ -62,7 +64,7 @@ GtTwUserPictureElement >> initialize [
 	"self addChild:  self buildProfilePictureElement."
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 GtTwUserPictureElement >> updateContentForUser: aUser [
 	pictureElement removeChildren; addChild: (
 		aUser 
@@ -72,7 +74,7 @@ GtTwUserPictureElement >> updateContentForUser: aUser [
 					ifNil: [BlElement new] ] ).
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUserPictureElement >> user: aUser [ 
 	self updateContentForUser:  aUser
 ]

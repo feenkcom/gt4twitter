@@ -1,15 +1,17 @@
 Class {
-	#name : #GtTwRawTweet,
-	#superclass : #GtTwRawEntity,
-	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
+	#name : 'GtTwRawTweet',
+	#superclass : 'GtTwRawEntity',
+	#category : 'GToolkit4Twitter-Api-Connector-Model-Basic',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model-Basic'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawTweet >> createdAt [
 	^ DateAndTime fromString:  (self rawDataAt: 'created_at') 
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwRawTweet >> gtViewTextFor: aView [
 	<gtView>
 	
@@ -22,12 +24,12 @@ GtTwRawTweet >> gtViewTextFor: aView [
 		view: #gtStringFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawTweet >> likesCount [
 	^ self publicMetrics at: 'like_count' ifAbsent:[ nil ].
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtTwRawTweet >> printOn: aStream [
 	super printOn: aStream.
 	
@@ -35,19 +37,19 @@ GtTwRawTweet >> printOn: aStream [
 		aStream print: self text ]
 ]
 
-{ #category : #'accessing  - metrics' }
+{ #category : 'accessing  - metrics' }
 GtTwRawTweet >> publicMetrics [
 	^ self rawData 
 		at: 'public_metrics' 
 		ifAbsent: [ Dictionary new ]
 ]
 
-{ #category : #'accessing  - metrics' }
+{ #category : 'accessing  - metrics' }
 GtTwRawTweet >> retweetsCount [
 	^ self publicMetrics at: 'retweet_count' ifAbsent: [ nil ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawTweet >> text [
 	^ self rawDataWithDefaultAt: 'text'
 ]

@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwTweetsGroup,
-	#superclass : #GtTwEntitiesGroup,
-	#category : #'GToolkit4Twitter-Api-Connector-Model'
+	#name : 'GtTwTweetsGroup',
+	#superclass : 'GtTwEntitiesGroup',
+	#category : 'GToolkit4Twitter-Api-Connector-Model',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwTweetsGroup >> gtViewTweetsListFor: aView [
 	<gtView>
 
@@ -17,7 +19,7 @@ GtTwTweetsGroup >> gtViewTweetsListFor: aView [
 		column: 'Text' text: [ :aTweet | aTweet text ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwTweetsGroup >> gtViewTweetsSummaryUIFor: aView [
 	<gtView>
 

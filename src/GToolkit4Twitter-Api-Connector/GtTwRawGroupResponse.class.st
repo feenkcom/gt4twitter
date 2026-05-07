@@ -1,13 +1,15 @@
 Class {
-	#name : #GtTwRawGroupResponse,
-	#superclass : #GtTwRawResponse,
+	#name : 'GtTwRawGroupResponse',
+	#superclass : 'GtTwRawResponse',
 	#instVars : [
 		'metadata'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
+	#category : 'GToolkit4Twitter-Api-Connector-Model-Basic',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model-Basic'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwRawGroupResponse >> gtViewMetadataFor: aView [
 	<gtView>
 	
@@ -18,12 +20,12 @@ GtTwRawGroupResponse >> gtViewMetadataFor: aView [
 		view: #gtRawDataFor:
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtTwRawGroupResponse >> hasNextPaginationToken [
 	^ self metadata hasNotNilKey: 'next_token'
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwRawGroupResponse >> initializaFromRawData: aDictionary [
 	super initializaFromRawData: aDictionary.
 	
@@ -32,19 +34,19 @@ GtTwRawGroupResponse >> initializaFromRawData: aDictionary [
 			at: 'meta' ifAbsent: [ Dictionary new ]))
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawGroupResponse >> metadata [
 
 	^ metadata
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawGroupResponse >> metadata: anObject [
 
 	metadata := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwRawGroupResponse >> nextPaginationToken [
 	^ self metadata rawDataAt: 'next_token'
 ]

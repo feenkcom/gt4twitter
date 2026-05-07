@@ -1,16 +1,18 @@
 Class {
-	#name : #GtTwUsersGroupLookupAPIRequest,
-	#superclass : #GtTwUserLookupAPIRequest,
-	#category : #'GToolkit4Twitter-Api-Connector-Requests'
+	#name : 'GtTwUsersGroupLookupAPIRequest',
+	#superclass : 'GtTwUserLookupAPIRequest',
+	#category : 'GToolkit4Twitter-Api-Connector-Requests',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Requests'
 }
 
-{ #category : #'query parameters' }
+{ #category : 'query parameters' }
 GtTwUsersGroupLookupAPIRequest >> paginationToken [
 
 	^ self queryParameterAt: 'pagination_token'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUsersGroupLookupAPIRequest >> paginationToken: aPaginationToken [
 
 	self queryParameterAt: 'pagination_token' put: aPaginationToken

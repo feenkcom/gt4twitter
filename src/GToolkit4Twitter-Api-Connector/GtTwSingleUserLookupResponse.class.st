@@ -2,12 +2,14 @@
 nil
 "
 Class {
-	#name : #GtTwSingleUserLookupResponse,
-	#superclass : #GtTwRawResponse,
-	#category : #'GToolkit4Twitter-Api-Connector-Model-Basic'
+	#name : 'GtTwSingleUserLookupResponse',
+	#superclass : 'GtTwRawResponse',
+	#category : 'GToolkit4Twitter-Api-Connector-Model-Basic',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model-Basic'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwSingleUserLookupResponse >> initializaFromRawData: aDictionary [
 	super initializaFromRawData: aDictionary.
 	

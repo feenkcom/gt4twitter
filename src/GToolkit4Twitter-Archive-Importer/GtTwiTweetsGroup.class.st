@@ -31,6 +31,11 @@ GtTwiTweetsGroup >> gtViewTweetsTimelineFor: aView [
 			aTweetElement tweet: aTweet ]
 ]
 
+{ #category : 'as yet unclassified' }
+GtTwiTweetsGroup >> photos [
+	^ GtTwiMediaItemGroup withAll: (self flatCollect: #photos)
+]
+
 { #category : 'accessing' }
 GtTwiTweetsGroup >> retweets [
 	^ self select: #isRetweet

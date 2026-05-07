@@ -1,21 +1,23 @@
 Class {
-	#name : #GtTwAppOnlyAPIContext,
-	#superclass : #GtTwTwitterAPIContext,
-	#category : #'GToolkit4Twitter-Api-Connector-Client'
+	#name : 'GtTwAppOnlyAPIContext',
+	#superclass : 'GtTwTwitterAPIContext',
+	#category : 'GToolkit4Twitter-Api-Connector-Client',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Client'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwAppOnlyAPIContext class >> forBearerToken: aBearerToken [
 	^ self forAuthentication:  (GtAcBearerTokenAuthentication new 
 		bearerToken: aBearerToken)
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwAppOnlyAPIContext class >> fromClipboard [
 	^ self forBearerToken: GtAcInMemoryToken fromClipboard
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwAppOnlyAPIContext class >> fromEnvVar [
 	^ self forBearerToken: (GtAcEnvVariableToken 
 		fromEnvVar: 'TWITTER_API_TOKEN') 

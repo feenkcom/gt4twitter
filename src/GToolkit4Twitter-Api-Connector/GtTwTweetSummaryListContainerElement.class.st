@@ -1,13 +1,15 @@
 Class {
-	#name : #GtTwTweetSummaryListContainerElement,
-	#superclass : #BrVerticalPane,
+	#name : 'GtTwTweetSummaryListContainerElement',
+	#superclass : 'BrVerticalPane',
 	#instVars : [
 		'tweetSummaryElement'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-UI'
+	#category : 'GToolkit4Twitter-Api-Connector-UI',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'UI'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwTweetSummaryListContainerElement >> initialize [
 	super initialize.
 	
@@ -19,11 +21,11 @@ GtTwTweetSummaryListContainerElement >> initialize [
 	self addChild: (tweetSummaryElement := GtTwTweetSummaryElement new).
 	self addChild: (BrFrame new 
 		hExact: 450;
-		vExact: 1;
+		vFitContent;
 		background: Color veryLightGray  muchLighter )
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwTweetSummaryListContainerElement >> tweet: aTweet [
 	tweetSummaryElement tweet: aTweet
 ]

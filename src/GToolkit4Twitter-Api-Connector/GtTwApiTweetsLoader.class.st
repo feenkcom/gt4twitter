@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwApiTweetsLoader,
-	#superclass : #GtTwApiDataLoader,
-	#category : #'GToolkit4Twitter-Api-Connector-Loader'
+	#name : 'GtTwApiTweetsLoader',
+	#superclass : 'GtTwApiDataLoader',
+	#category : 'GToolkit4Twitter-Api-Connector-Loader',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Loader'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwApiTweetsLoader >> createTimelineTweetsStreamForUserId: aUserId [
 	^ GtTwTweetsPaginatedLoaderStream new
 		initializeWithRequestBuilder: [ 
@@ -14,7 +16,7 @@ GtTwApiTweetsLoader >> createTimelineTweetsStreamForUserId: aUserId [
 			getTweetsRequest withDefaultConfiguration ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwApiTweetsLoader >> getTimelineTweetsForUser: aUser [
 	| tweetsStream |
 	tweetsStream := self createTimelineTweetsStreamForUserId: aUser id.
@@ -27,7 +29,7 @@ GtTwApiTweetsLoader >> getTimelineTweetsForUser: aUser [
 	^ tweetsStream cached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwApiTweetsLoader >> getTimelineTweetsForUserId: aUserId [
 	| tweetsStream |
 	tweetsStream := self createTimelineTweetsStreamForUserId: aUserId.

@@ -1,10 +1,12 @@
 Class {
-	#name : #GtTwUsersCachedStream,
-	#superclass : #GtTwAsyncCachedPaginatedLoaderStream,
-	#category : #'GToolkit4Twitter-Api-Connector-Streams'
+	#name : 'GtTwUsersCachedStream',
+	#superclass : 'GtTwAsyncCachedPaginatedLoaderStream',
+	#category : 'GToolkit4Twitter-Api-Connector-Streams',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Streams'
 }
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwUsersCachedStream >> gtViewUsersListFor: aView [
 	<gtView>
 
@@ -17,7 +19,7 @@ GtTwUsersCachedStream >> gtViewUsersListFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwUsersCachedStream >> gtViewUsersSummaryUIFor: aView [
 	<gtView>
 

@@ -1,6 +1,6 @@
 Class {
-	#name : #GtTwUser,
-	#superclass : #GtTwEntity,
+	#name : 'GtTwUser',
+	#superclass : 'GtTwEntity',
 	#instVars : [
 		'id',
 		'username',
@@ -10,32 +10,34 @@ Class {
 		'following',
 		'profilePictureForm'
 	],
-	#category : #'GToolkit4Twitter-Api-Connector-Model'
+	#category : 'GToolkit4Twitter-Api-Connector-Model',
+	#package : 'GToolkit4Twitter-Api-Connector',
+	#tag : 'Model'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwUser class >> fromRawUser: aRawUser [
 	^ self new 
 		initializeFromRawUser: aRawUser
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 GtTwUser class >> fromRawUser: aRawUser inContext: anApiContext [
 	^ (self forApiContext: anApiContext)
 		initializeFromRawUser: aRawUser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> description [
 	^ self rawUser description
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtTwUser >> descriptionOn: aStream [ 
 	aStream << (self name ifNil: ['-']) 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> downloadPofileImage [
 	^ self rawUser profileImageUrl 
 		ifNotNil: [ :anUrlString |
@@ -46,31 +48,31 @@ GtTwUser >> downloadPofileImage [
 			^ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> followers [ 
 	^ followers ifNil: [
 		followers := self apiContext usersLoader 
 			getFollowersForUserId: self id ]
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwUser >> followersCount [
 	^ self rawUser followersCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> following [ 
 	^  following ifNil: [
 		following := self apiContext usersLoader 
 			getFollowingForUserId: self id ]
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwUser >> followingCount [
 	^ self rawUser followingCount
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwUser >> gtViewDetailsFor: aView [
 	<gtView>
 	
@@ -80,7 +82,7 @@ GtTwUser >> gtViewDetailsFor: aView [
 		items: [ {} ]
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwUser >> gtViewFollowersListFor: aView [
 	<gtView>
 	
@@ -92,7 +94,7 @@ GtTwUser >> gtViewFollowersListFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwUser >> gtViewFollowersSummaryUIFor: aView [
 	<gtView>
 	
@@ -104,7 +106,7 @@ GtTwUser >> gtViewFollowersSummaryUIFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwUser >> gtViewFollowingSummaryUIFor: aView [
 	<gtView>
 	
@@ -116,7 +118,7 @@ GtTwUser >> gtViewFollowingSummaryUIFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : 'gt - extensions' }
 GtTwUser >> gtViewTweetsSummaryUIFor: aView [
 	<gtView>
 	
@@ -128,12 +130,12 @@ GtTwUser >> gtViewTweetsSummaryUIFor: aView [
 		actionUpdateButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> id [
 	^ self rawUser id
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtTwUser >> initializeFromRawUser: aRawUser [
 	self rawUser: aRawUser.
 	
@@ -141,12 +143,12 @@ GtTwUser >> initializeFromRawUser: aRawUser [
 	username := aRawUser username.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> name [
 	^ self rawUser name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> profilePictureForm [ 
 	^ profilePictureForm ifNil: [
 		[profilePictureForm := self downloadPofileImage]
@@ -159,31 +161,31 @@ GtTwUser >> profilePictureForm [
 			profilePictureForm ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> rawUser [
 
 	^ rawUser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> rawUser: anObject [
 
 	rawUser := anObject
 ]
 
-{ #category : #'accessing - metrics' }
+{ #category : 'accessing - metrics' }
 GtTwUser >> tweetCount [
 	^ self rawUser tweetCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> tweets [ 
 	^ tweets ifNil: [
 		tweets := self apiContext tweetsLoader 
 			getTimelineTweetsForUser: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtTwUser >> username [
 	^ username
 ]
